@@ -1,11 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Vädret Nu – enkel och snabb väderprognos för svenska städer. Sök på stad och få aktuellt väder direkt."/>
     
-</body>
+    <script type="module" src="js/main.js" defer></script>
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/weatherCards.css" />
+    <link rel="stylesheet" href="css/navBar.css" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Vädret Nu – Snabb väderprognos för Sverige</title>
+  </head>
+
+  <body>
+    <div id="container-main">
+
+      <main>
+
+        <!-- Väderkort hamnar här i -->
+        <div id="cards-container">
+
+          <!-- <section class="weather-card">
+            <div class="weather-card-top">
+              <button class="weather-card-close">
+                <i class="fa-solid fa-x"></i>
+              </button>
+            </div>
+            <div class="weather-card-info">
+              <p class="weather-date">Måndag, 24 November</p>
+              <h2 class="weather-city">Stockholm</h2>
+              <img class="weather-icon" src="assets/sun-clouds.png" alt="">
+              <h3 class="weather-degrees">31</h3>
+              <p class="weather-description">Mest soligt</p>
+            </div>
+            <div class="weather-card-bottom">
+              &nbsp;
+            </div>
+          </section> -->
+
+        </div>
+
+      </main>
+
+      <div id="nav-container">
+        <nav id="nav-bar">
+          <input type="text" id="cityInput" placeholder="Sök efter stad...">
+          <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </nav>
+      </div>
+
+    </div>
+  </body>
 </html>
