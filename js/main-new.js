@@ -38,7 +38,7 @@ async function initApp() {
 
         let savedWeather = new WeatherStorage(city, weather);
         savedCities.push(savedWeather);
-        console.log("Saved city, total added:", weatherCards.length);
+        console.log("Saved city, total added:", savedCities.length);
 
         userInputHtml.value = "";
     };
