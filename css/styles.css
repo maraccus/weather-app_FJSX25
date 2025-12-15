@@ -13,17 +13,15 @@
     --card-bg: #495df5;
     --card-margin-top: 4rem;
 
+    --main-bg: #333333;
     --color-primary: #495df5;
 }
 
 body {
-    background-color: #333333;
+    background-color: var(--main-bg);
     color: #ffffff;
     font-family: roboto;
 
     height: 100vh;
-}
-
-#container-main {
-    width: 100%;
+    width: 100vw;
 }

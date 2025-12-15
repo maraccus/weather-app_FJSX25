@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/weatherCards.css" />
     <link rel="stylesheet" href="css/navBar.css" />
+    <link rel="stylesheet" href="css/containers.css">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
     
@@ -20,42 +21,32 @@
   </head>
 
   <body>
-    <div id="container-main">
+    
+    <div id="main-container">
 
-      <main>
+      <!-- Väderkort hamnar här-->
+      <div id="cards-container">
 
-        <!-- Väderkort hamnar här i -->
-        <div id="cards-container">
+        <section class="card">
+          <p>Måndag, 15 December</p>
+          <h2>Helsingborg</h2>
+          <img src="assets/images/partly-cloudy-rain.png" alt="">
+          <h3>7c</h3>
+          <p>Delvis regn</p>
+        </section>
 
-          <!-- <section class="weather-card">
-            <div class="weather-card-top">
-              <button class="weather-card-close">
-                <i class="fa-solid fa-x"></i>
-              </button>
-            </div>
-            <div class="weather-card-info">
-              <p class="weather-date">Måndag, 24 November</p>
-              <h2 class="weather-city">Stockholm</h2>
-              <img class="weather-icon" src="assets/sun-clouds.png" alt="">
-              <h3 class="weather-degrees">31</h3>
-              <p class="weather-description">Mest soligt</p>
-            </div>
-            <div class="weather-card-bottom">
-              &nbsp;
-            </div>
-          </section> -->
-
-        </div>
-
-      </main>
+      </div>
 
       <div id="nav-container">
+
         <nav id="nav-bar">
           <input type="text" id="cityInput" placeholder="Sök efter stad...">
           <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </nav>
+        
       </div>
 
     </div>
+
   </body>
 </html>
