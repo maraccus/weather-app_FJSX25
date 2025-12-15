@@ -26,6 +26,7 @@ export class WeatherCard{
         this.element.appendChild(topDiv);
 
         // Info div
+
         const infoDiv = document.createElement('div');
         infoDiv.className = 'weather-card-info';
 
