@@ -15,7 +15,6 @@
 }
 
 .weather-card-info {
-    /* max-height: 678px; */
 
     display: flex;
     flex-direction: column;
@@ -48,7 +47,6 @@
 }
 .weather-card-top {
     height: var(--card-t-b-height);
-    /* background-color: var(--card-bg); */
     width: 100%;
     display: flex;
     justify-content: end;
@@ -66,8 +64,6 @@
 }
 .weather-card-bottom {
     height: var(--card-t-b-height);
-    /* background-color: var(--card-bg); */
-    /* border-radius: 0 0 var(--card-br) var(--card-br); */
 }
 
 #cards-container:has(.weather-card:nth-child(n+2)) .weather-card {
