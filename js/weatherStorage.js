@@ -20,7 +20,7 @@ export class WeatherStorage {
         }
 
         const icon = document.createElement('i');
-        icon.className = 'fa-solid fa-circle';
+        icon.className = 'fa-regular fa-circle';
 
         buttonContainer.appendChild(icon);
     }
