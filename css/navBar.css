@@ -6,7 +6,7 @@
     /* width: 60%; */
     /* min-width: calc(var(--min-width) - 4rem); */
     /* max-width: calc(var(--max-width) - 10rem); */
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
