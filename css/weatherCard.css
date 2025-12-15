@@ -14,8 +14,6 @@
     padding: 4rem 0 4rem 0;
 
     transition: border-radius 0.2s ease-in, margin-top 0.2s ease-in, box-shadow 0.2s ease-in;
-
-    
 }
 
 .card .card-date {
@@ -74,8 +72,7 @@
 
 .weather-thunder {
     /* background: linear-gradient(to top, rgb(63, 63, 63), #3e428f); */
-
-        background: linear-gradient(
+    background: linear-gradient(
         to bottom,
         rgb(38, 61, 91),
         #59908f,

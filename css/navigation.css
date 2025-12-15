@@ -1,3 +1,49 @@
+#pagination-dots {
+    position: absolute;
+    bottom: 2rem;        /* eller top: */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    
+    gap: .5rem;
+}
+
+#pagination-dots button {
+    width: 10px;
+    height: 10px;
+    background: none;
+    border: none;
+    color: #ffffff;
+  
+    cursor: pointer;
+}
+
+#card-remove {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    /* transform: translateX(-50%); */
+    display: flex;
+}
+
+#card-remove button {
+    width: 3rem;
+    height: 3rem;
+    background: none;
+    border: none;
+    color: #ffffff;
+    /* background-color: bisque; */
+    cursor: pointer;
+    transition: color .1s ease-in;
+    i {
+        font-size: 2rem;
+    }
+}
+
+#card-remove button:hover {
+    color: rgb(255, 0, 0);
+}
+
 #nav-bar {
     height: 100%;
     width: 100%;
