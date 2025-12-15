@@ -8,9 +8,10 @@
     <script type="module" src="js/main.js" defer></script>
 
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/weatherCards.css" />
+    <link rel="stylesheet" href="css/weatherCard.css" />
     <link rel="stylesheet" href="css/navBar.css" />
     <link rel="stylesheet" href="css/containers.css">
+    <link rel="stylesheet" href="css/paginationDots.css">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
     
@@ -28,14 +29,20 @@
       <div id="cards-container">
 
         <section class="card">
-          <p>Måndag, 15 December</p>
-          <h2>Helsingborg</h2>
-          <img src="assets/images/partly-cloudy-rain.png" alt="">
-          <h3>7c</h3>
-          <p>Delvis regn</p>
+          <p class="card-date">Måndag, 15 December</p>
+          <h2 class="card-city">Helsingborg</h2>
+          <img class="card-icon" src="assets/images/partly-cloudy-rain.png" alt="">
+          <h3 class="card-temp">7c</h3>
+          <p class="card-description">Delvis regn</p>
         </section>
 
       </div>
+
+      <nav id="pagination-dots">
+        <i class="fa-solid fa-circle"></i>
+        <i class="fa-regular fa-circle"></i>
+        <i class="fa-regular fa-circle"></i>
+      </nav>
 
       <div id="nav-container">
 
@@ -43,7 +50,7 @@
           <input type="text" id="cityInput" placeholder="Sök efter stad...">
           <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </nav>
-        
+
       </div>
 
     </div>
