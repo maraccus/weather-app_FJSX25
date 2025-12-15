@@ -1,4 +1,5 @@
 import { ApiService } from "./api/api.js";
+import { formatWeatherTime } from "./utils/dateUtils.js";
 
 let allCities = [];
 
@@ -37,7 +38,7 @@ export async function getWeather(cityName) {
       temperature: weatherJSON.current.temperature_2m,
       description: convertWmo(weatherJSON.current.weather_code),
       weathercode: weatherJSON.current.weather_code,
-      time: weatherJSON.current.time,
+      time: formatWeatherTime(weatherJSON.current.time),
     };
 
     return { city, weather };
