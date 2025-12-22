@@ -1,4 +1,4 @@
-export class addCity{
+export class addCity {
     constructor(city, weather, temp) {
         this.city = city;
         this.weather = weather;
@@ -7,10 +7,9 @@ export class addCity{
         this.addCityCard();
     }
 
-    addCityCard(){
-        console.log("Creating pagination dot for new card: " + this.city)
+    addCityCard() {
+        console.log("Creating pagination dot for new city: " + this.city);
 
-        // Skapa huvudsektionen
         this.element = document.createElement('button');
 
         const dotIcon = document.createElement('i');
@@ -18,45 +17,43 @@ export class addCity{
 
         this.element.appendChild(dotIcon);
 
-        // Lägg till kortet i container
         const container = document.getElementById('pagination-dots');
         if (container) {
             container.appendChild(this.element);
 
+            this.setActiveDot(dotIcon);
+            this.switchToCurrent();
+
             this.element.addEventListener('click', () => {
                 this.switchToCurrent();
-                dotIcon.classList.remove('fa-regular');
-                dotIcon.classList.add('fa-solid');
+                this.setActiveDot(dotIcon);
             });
-
 
         } else {
             console.warn('Kunde inte lägga till pagination dot för sparad stad!');
         }
-
     }
 
-    switchToCurrent(){
-        console.log("Dot clicked for city: " + this.city);
+    switchToCurrent() {
+        const city = document.querySelector(".card-city");
+        if (city) city.textContent = this.city;
 
-                const city = document.querySelector(".card-city");
-                city.textContent = this.city;
+        const temp = document.querySelector(".card-temp");
+        if (temp) temp.textContent = this.temp + "°";
 
-                const temp = document.querySelector(".card-temp");
-                temp.textContent = this.temp + "°";
-
-                const weather = document.querySelector(".card-temp");
-                temp.textContent = this.weather;
-
-                const allDots = document.querySelectorAll('#pagination-dots button i');
-
-                allDots.forEach(dot => {
-                    dot.classList.remove('fa-solid');
-                    dot.classList.add('fa-regular');
-                });
-
-                // Sätt den klickade dotten som aktiv
-                
+        const weather = document.querySelector(".card-weather");
+        if (weather) weather.textContent = this.weather;
     }
 
+    setActiveDot(activeIcon) {
+        const allDots = document.querySelectorAll('#pagination-dots button i');
+
+        allDots.forEach(dot => {
+            dot.classList.remove('fa-solid');
+            dot.classList.add('fa-regular');
+        });
+
+        activeIcon.classList.remove('fa-regular');
+        activeIcon.classList.add('fa-solid');
+    }
 }
