@@ -24,13 +24,29 @@ export class addCity{
             container.appendChild(this.element);
 
             this.element.addEventListener('click', () => {
-                console.log("Dot clicked for city: " + this.city);
+                this.switchToCurrent();
+                dotIcon.classList.remove('fa-regular');
+                dotIcon.classList.add('fa-solid');
+            });
+
+
+        } else {
+            console.warn('Kunde inte lägga till pagination dot för sparad stad!');
+        }
+
+    }
+
+    switchToCurrent(){
+        console.log("Dot clicked for city: " + this.city);
 
                 const city = document.querySelector(".card-city");
                 city.textContent = this.city;
 
                 const temp = document.querySelector(".card-temp");
                 temp.textContent = this.temp + "°";
+
+                const weather = document.querySelector(".card-temp");
+                temp.textContent = this.weather;
 
                 const allDots = document.querySelectorAll('#pagination-dots button i');
 
@@ -40,17 +56,7 @@ export class addCity{
                 });
 
                 // Sätt den klickade dotten som aktiv
-                dotIcon.classList.remove('fa-regular');
-                dotIcon.classList.add('fa-solid');
-
-            // Här kan du t.ex. byta väderdata i kortet
-            /* this.activateDot(); */
-            });
-
-        } else {
-            console.warn('Kunde inte lägga till pagination dot för sparad stad!');
-        }
-
+                
     }
 
 }

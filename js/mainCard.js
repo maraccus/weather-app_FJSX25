@@ -37,9 +37,9 @@ export function initMainCard() {
     const pagination = document.createElement("nav");
     pagination.id = "pagination-dots";
 
-    pagination.innerHTML = `
+    /* pagination.innerHTML = `
     <button><i class="fa-solid fa-circle"></i></button>
-    `;
+    `; */
 
     // Remove-knapp
     const removeNav = document.createElement("nav");
