@@ -1,7 +1,28 @@
+import { addCity } from './addCity.js';
+import { initMainCard } from "./mainCard.js";
 import { WeatherCard } from './weatherCard.js';
 import * as WeatherData from "./weatherData.js";
 
+// Skapa huvudkortet
+initMainCard();
+
 let weatherCards = [];
+let savedCities = [];
+
+
+
+let card1 = new addCity("Helsingborg", "Sol", "23");
+savedCities.push(card1);
+
+let card2 = new addCity("Malmö", "Regn", "6");
+savedCities.push(card2);
+
+let card3 = new addCity("Göteborg", "Åska", "35");
+savedCities.push(card3);
+
+
+
+
 
 async function initApp() {
     console.log("Initializing app...");
