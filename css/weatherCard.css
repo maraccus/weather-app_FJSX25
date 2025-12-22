@@ -79,3 +79,10 @@
         #1c2071
     );
 }
+
+.card-city,
+.card-temp,
+.card-weather {
+    transition: opacity 0.2s ease;
+    opacity: 1;
+}

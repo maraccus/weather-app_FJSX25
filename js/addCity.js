@@ -36,13 +36,26 @@ export class addCity {
 
     switchToCurrent() {
         const city = document.querySelector(".card-city");
-        if (city) city.textContent = this.city;
-
         const temp = document.querySelector(".card-temp");
-        if (temp) temp.textContent = this.temp + "°";
-
         const weather = document.querySelector(".card-weather");
-        if (weather) weather.textContent = this.weather;
+
+        const elements = [city, temp, weather];
+
+        // Fade out
+        elements.forEach(anim => {
+            if (anim) anim.style.opacity = 0;
+        });
+
+        // Fade in
+        setTimeout(() => {
+            if (city) city.textContent = this.city;
+            if (temp) temp.textContent = this.temp + "°";
+            if (weather) weather.textContent = this.weather;
+
+            elements.forEach(anim => {
+                if (anim) anim.style.opacity = 1;
+            });
+        }, 200);
     }
 
     setActiveDot(activeIcon) {
