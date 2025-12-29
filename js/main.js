@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import { addCity } from './addCity.js';
 import { initMainCard } from "./mainCard.js";
 import { WeatherCard } from './weatherCard.js';
@@ -81,4 +79,3 @@ if (document.readyState === "loading") {
 } else {
     initApp();
 }
->>>>>>> feature/new-design-2
