@@ -1,0 +1,88 @@
+.card {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 0 0 var(--card-br) var(--card-br);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 4rem 0 4rem 0;
+
+    transition: border-radius 0.2s ease-in, margin-top 0.2s ease-in, box-shadow 0.2s ease-in;
+}
+
+.card .card-date {
+    font-size: 1.2rem;
+}
+
+.card .card-city {
+    font-size: 2.5rem;
+}
+
+.card .card-icon {
+    width: 15rem;
+    object-fit: contain;
+    margin-top: 3rem;
+}
+
+.card .card-temp {
+    font-size: 8rem;
+}
+
+.card .card-description {
+    font-size: 1.8rem;
+}
+
+@media (min-width: 768px) { 
+    .card {
+        border-radius: var(--card-br) var(--card-br) var(--card-br) var(--card-br);
+        margin-top: 4rem;
+        max-width: 1024px;
+        box-shadow: .2rem 1rem 3rem rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* Weather state gradients */
+
+.weather-rain {
+    background: linear-gradient(to top, #224172, #414448);
+}
+
+.weather-cloudy-rain {
+    background: linear-gradient(to top, #224172, #c7be7c);
+}
+
+.weather-sun {
+    background: linear-gradient(
+        to bottom,
+        #fef574,
+        #dda120,
+        #4facfe
+    );
+}
+
+.weather-cloudy {
+    background: linear-gradient(to top, rgb(239, 202, 83), #b4b2b2);
+}
+
+.weather-thunder {
+    /* background: linear-gradient(to top, rgb(63, 63, 63), #3e428f); */
+    background: linear-gradient(
+        to bottom,
+        rgb(38, 61, 91),
+        #59908f,
+        #1c2071
+    );
+}
+
+.card-city,
+.card-temp,
+.card-weather {
+    transition: opacity 0.2s ease;
+    opacity: 1;
+}

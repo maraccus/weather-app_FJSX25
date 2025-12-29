@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --min-width: 420px;
+    --max-width: 600px;
+
+    --card-br: 3rem;
+    --card-t-b-height: 4rem;
+    --card-bg: #495df5;
+    --card-margin-top: 4rem;
+
+    --main-bg: #333333;
+    --color-primary: #495df5;
+}
+
+body {
+    background-color: var(--main-bg);
+    color: #ffffff;
+    font-family: roboto;
+
+    height: 100vh;
+    width: 100vw;
+}
