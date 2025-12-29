@@ -33,7 +33,11 @@ export class WeatherCard{
 
         const dateP = document.createElement('p');
         dateP.className = 'weather-date';
-        dateP.textContent = this.weather && this.weather.time ? `${formatDate(this.weather.time)} ${formatTime(this.weather.time)}` : "Måndag, 24 November";
+        dateP.textContent = this.weather && this.weather.time ? formatDate(this.weather.time) : "Måndag, 24 November";
+
+        const timeP = document.createElement('p');
+        timeP.className = 'weather-time';
+        timeP.textContent = this.weather && this.weather.time ? formatTime(this.weather.time) : "";
 
         const cityH2 = document.createElement('h2');
         cityH2.className = 'weather-city';
@@ -52,7 +56,7 @@ export class WeatherCard{
         descP.className = 'weather-description';
         descP.textContent = this.weather?.description || "Okänt väder";
 
-        infoDiv.append(dateP, cityH2, iconImg, degreesH3, descP);
+        infoDiv.append(dateP, timeP, cityH2, iconImg, degreesH3, descP);
         this.element.appendChild(infoDiv);
 
         // Bottom div

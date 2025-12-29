@@ -12,6 +12,11 @@ export function initMainCard() {
     date.className = "card-date";
     date.textContent = "Day, Date";
 
+    // Tid
+    const time = document.createElement("p");
+    time.className = "card-time";
+    time.textContent = "";
+
     // Stad
     const city = document.createElement("h2");
     city.className = "card-city";
@@ -52,6 +57,7 @@ export function initMainCard() {
     // Lägg allt i section
     section.append(
     date,
+    time,
     city,
     icon,
     temp,
