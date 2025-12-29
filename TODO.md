@@ -1,8 +1,12 @@
 **Detta är vår TODO-list inför slutspurten.**
 
 **KAN SLUTFÖRAS:**
-⁃ Startsida(Marcus)
-⁃ Paginering - (Marcus)
+⁃ Startsida m instruktioner (Marcus)
+- Pop-up som säger att du inte kan lägga till fler (Marcus)
+- Möjlighet att ta bort tillagd stad (Marcus)
+
+- Fixa så den byter ikon beroende på väder (Ponti i rutan)
+- Lägga till väderklasser per stad så den visar rätt bakgrund (Ponti)
 ⁃ localStorage (Pontüs)
 
 **KAN EJ SLUTFÖRAS ÄNNU:**
