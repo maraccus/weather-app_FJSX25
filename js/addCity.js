@@ -1,8 +1,11 @@
+import { formatDate } from './dateUtils.js';
+
 export class addCity {
-    constructor(city, weather, temp) {
+    constructor(city, weather, temp, time) {
         this.city = city;
         this.weather = weather;
         this.temp = temp;
+        this.time = time;
 
         this.addCityCard();
     }
@@ -35,11 +38,12 @@ export class addCity {
     }
 
     switchToCurrent() {
+        const dateEl = document.querySelector('.card-date');
         const city = document.querySelector(".card-city");
         const temp = document.querySelector(".card-temp");
         const weather = document.querySelector(".card-weather");
 
-        const elements = [city, temp, weather];
+        const elements = [dateEl, city, temp, weather];
 
         // Fade out
         elements.forEach(anim => {
@@ -48,6 +52,7 @@ export class addCity {
 
         // Fade in
         setTimeout(() => {
+            if (dateEl) dateEl.textContent = this.time ? formatDate(this.time) : dateEl.textContent;
             if (city) city.textContent = this.city;
             if (temp) temp.textContent = this.temp + "°";
             if (weather) weather.textContent = this.weather;

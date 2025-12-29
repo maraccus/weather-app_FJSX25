@@ -1,3 +1,5 @@
+import { formatDate, formatTime } from './dateUtils.js';
+
 export class WeatherCard{
     constructor(city, weather) {
         this.city = city;
@@ -31,7 +33,7 @@ export class WeatherCard{
 
         const dateP = document.createElement('p');
         dateP.className = 'weather-date';
-        dateP.textContent = "Måndag, 24 November";
+        dateP.textContent = this.weather && this.weather.time ? `${formatDate(this.weather.time)} ${formatTime(this.weather.time)}` : "Måndag, 24 November";
 
         const cityH2 = document.createElement('h2');
         cityH2.className = 'weather-city';
