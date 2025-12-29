@@ -1,6 +1,5 @@
 import { addCity } from './addCity.js';
 import { initMainCard } from "./mainCard.js";
-import { WeatherCard } from './weatherCard.js';
 import { getWeatherForCity } from "./weatherData.js";
 
 // Skapa huvudkortet
