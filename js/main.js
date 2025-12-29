@@ -1,7 +1,7 @@
 import { addCity } from './addCity.js';
 import { initMainCard } from "./mainCard.js";
 import { WeatherCard } from './weatherCard.js';
-import * as WeatherData from "./weatherData.js";
+import { getWeatherForCity } from "./weatherData.js";
 
 // Skapa huvudkortet
 initMainCard();
@@ -27,8 +27,7 @@ savedCities.push(card3);
 async function initApp() {
     console.log("Initializing app...");
     
-    await WeatherData.loadCities();
-    console.log("Cities loaded");
+    console.log("App ready");
 
     const btnHtml = document.querySelector("#searchBtn");
     const userInputHtml = document.querySelector("#cityInput");
@@ -47,7 +46,7 @@ async function initApp() {
             return;
         }
 
-        const result = await WeatherData.getWeather(cityName);
+        const result = await getWeatherForCity(cityName);
         if (!result) {
             console.log("No weather result returned");
             return;
@@ -56,9 +55,10 @@ async function initApp() {
         const { city, weather } = result;
         console.log("Got weather data for:", city.name, weather);
 
-        let card = new WeatherCard(city, weather);
-        weatherCards.push(card);
-        console.log("Card created, total cards:", weatherCards.length);
+        // Add data from api to pagnation
+        let dot = new addCity(city.name, weather.description, Math.round(weather.temperature));
+        savedCities.push(dot);
+        console.log("Added to pagination dots, total saved cities:", savedCities.length);
 
         userInputHtml.value = "";
     };

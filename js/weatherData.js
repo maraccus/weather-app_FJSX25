@@ -1,43 +1,34 @@
 import { ApiService } from "./api/api.js";
 
-let allCities = [];
+export async function getWeatherForCity(cityName) {
+  if (!cityName) return null;
 
-export async function loadCities() {
-  const api = new ApiService("http://kontoret.onvo.se:10480/GetCities");
-
-  try {
-    allCities = await api.fetchData();
-    console.log("Loaded cities:", allCities);
-  } catch (err) {
-    console.error("Kunde inte hämta städer:", err);
-  }
-}
-
-export function findCityByName(name) {
-  const lower = name.toLowerCase();
-  return allCities.find((c) => c.name.toLowerCase() === lower);
-}
-
-export async function getWeather(cityName) {
-  const city = findCityByName(cityName);
-  if (!city) {
-    alert("Staden finns inte i listan.");
-    return null;
-  }
-
-  const { latitude, longitude } = city;
-
-  const url = `http://kontoret.onvo.se:10480/GetWeather?lat=${latitude}&lon=${longitude}`;
-  const api = new ApiService(url);
+  const geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
+    cityName
+  )}&count=1&language=en&format=json`;
+  const geoApi = new ApiService(geoUrl);
 
   try {
-    const weatherJSON = await api.fetchData();
+    const geoJson = await geoApi.fetchData();
+    const results = geoJson.results || [];
+    if (!results.length) {
+      alert("Staden hittades inte.");
+      return null;
+    }
 
+    const city = results[0];
+    const { latitude, longitude } = city;
+
+    const forecastUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
+    const forecastApi = new ApiService(forecastUrl);
+    const forecastJson = await forecastApi.fetchData();
+
+    const cw = forecastJson.current_weather || {};
     const weather = {
-      temperature: weatherJSON.current.temperature_2m,
-      description: convertWmo(weatherJSON.current.weather_code),
-      weathercode: weatherJSON.current.weather_code,
-      time: weatherJSON.current.time,
+      temperature: cw.temperature ?? null,
+      description: convertWmo(cw.weathercode),
+      weathercode: cw.weathercode ?? null,
+      time: cw.time ?? null,
     };
 
     return { city, weather };
