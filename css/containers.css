@@ -37,3 +37,29 @@
 
     display: none;
 }
+
+#welcome-container {
+    width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-between; */
+    justify-content: center;
+
+    height: 100%;
+    width: 100%;
+    padding-bottom: 4rem;
+}
+#welcome-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+#welcome-container h2 {
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+#welcome-container p {
+    margin-top: 2rem;
+
+    color: var(--text-secondary);
+}
