@@ -9,6 +9,11 @@ async function startApp() {
     initMainCard();
     // Skapa navigationsbaren
     initNavBar();
+
+    const cardsContainer = document.getElementById("cards-container");
+    const navContainer = document.getElementById("nav-container");
+    cardsContainer.classList.add("fade-in");
+    navContainer.classList.add("fade-in");
     
     let weatherCards = [];
     let savedCities = [];
