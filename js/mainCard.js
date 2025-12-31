@@ -1,7 +1,12 @@
 export function initMainCard() {
 
+
     // Hämta cards-container
-    const cardsContainer = document.getElementById("cards-container");
+    const mainContainer = document.getElementById("main-container");
+
+    // Skapa <!-- <div id="cards-container"></div> -->
+    const cContainer = document.createElement("div");
+    cContainer.id = "cards-container";
 
     // Skapa section
     const section = document.createElement("section");
@@ -67,7 +72,8 @@ export function initMainCard() {
     );
 
     // Lägg section i cards-container
-    cardsContainer.appendChild(section);
+    cContainer.appendChild(section);
+    mainContainer.appendChild(cContainer);
 
     console.log("Huvudkort skapat");
 

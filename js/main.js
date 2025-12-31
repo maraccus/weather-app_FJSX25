@@ -1,23 +1,18 @@
 import { addCity } from './addCity.js';
 import { initMainCard } from "./mainCard.js";
+import { initNavBar } from "./navBar.js";
 import { getWeatherForCity } from "./weatherData.js";
 
-// Skapa huvudkortet
-initMainCard();
+async function startApp() {
 
-let weatherCards = [];
-let savedCities = [];
+    // Skapa huvudkortet
+    initMainCard();
+    // Skapa navigationsbaren
+    initNavBar();
+    
+    let weatherCards = [];
+    let savedCities = [];
 
-// let card1 = new addCity("Helsingborg", "Sol", "23");
-// savedCities.push(card1);
-
-// let card2 = new addCity("Malmö", "Regn", "6");
-// savedCities.push(card2);
-
-// let card3 = new addCity("Göteborg", "Åska", "35");
-// savedCities.push(card3);
-
-async function initApp() {
     console.log("Initializing app...");
     
     console.log("App ready");
@@ -49,7 +44,7 @@ async function initApp() {
         console.log("Got weather data for:", city.name, weather);
 
         // Add data from api to pagnation
-            let dot = new addCity(city.name, weather.description, Math.round(weather.temperature), weather.time);
+        let dot = new addCity(city.name, weather.description, Math.round(weather.temperature), weather.time);
         savedCities.push(dot);
         console.log("Added to pagination dots, total saved cities:", savedCities.length);
 
@@ -72,9 +67,19 @@ async function initApp() {
     console.log("Event listeners attached");
 }
 
-// Wait for DOM to be ready
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initApp);
-} else {
-    initApp();
-}
+async function initNav(){
+    console.log("Nav initialized");
+};
+
+// // Wait for DOM to be ready
+// if (document.readyState === "loading") {
+//     document.addEventListener("DOMContentLoaded", initApp);
+// } else {
+//     initApp();
+// }
+
+// startApp();
+
+window.addEventListener("introFinished", () => {
+  startApp();
+});

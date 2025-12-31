@@ -1,14 +1,18 @@
 #main-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#welcome-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: space-between; */
     justify-content: center;
-
-    height: 100%;
-    width: 100%;
-    padding-bottom: 4rem;
 }
+
 
 #cards-container {
     display: flex;
@@ -18,7 +22,7 @@
     width: 85%;
     height: 100%;
 
-    display: none;
+    /* display: none; */
     
     /* max-width: 768px; */
     min-height: 700px;
@@ -35,21 +39,9 @@
     width: 70%;
     max-width: 400px;
 
-    display: none;
+    /* display: none; */
 }
 
-#welcome-container {
-    width: 480px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* justify-content: space-between; */
-    justify-content: center;
-
-    height: 100%;
-    width: 100%;
-    padding-bottom: 4rem;
-}
 #welcome-container h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
