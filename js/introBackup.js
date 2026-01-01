@@ -1,19 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
 
-    /* 
-    Ursprunglig HTML:
-
-    <div id="welcome-container">
-      <h1>Välkommen till Vädret Nu</h1>
-      <h2>Få snabb och enkel väderprognos för svenska städer</h2>
-      <p>
-        <i class="fa-solid fa-circle"></i>
-        <i class="fa-regular fa-circle"></i>
-        <i class="fa-regular fa-circle"></i>
-      </p>
-    </div>
-    */
-
     // Skapa element till introduktionen
     const welcomeContainer = document.createElement("div");
     welcomeContainer.id = "welcome-container";
@@ -79,4 +65,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Dölj welcome
     welcome.style.display = "none";
     window.dispatchEvent(new Event("introFinished"));
+
+    // Fade-in UI
+    // requestAnimationFrame(() => {
+    //     cards.classList.add("ui-visible");
+    //     nav.classList.add("ui-visible");
+
+    //     // Event till main.js
+    //     window.dispatchEvent(new Event("introFinished"));
+    // });
 });

@@ -1,8 +1,9 @@
 export function initMainCard() {
 
-
-    // Hämta cards-container
-    const mainContainer = document.getElementById("main-container");
+    // Skapa main-container
+    const mainContainer = document.createElement("div");
+    mainContainer.id = "main-container";
+    document.body.appendChild(mainContainer);
 
     // Skapa <!-- <div id="cards-container"></div> -->
     const cContainer = document.createElement("div");
