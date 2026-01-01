@@ -1,7 +1,7 @@
 **Detta är vår TODO-list inför slutspurten.**
 
 **KAN SLUTFÖRAS:**
-⁃ Startsida m instruktioner (Marcus)
+⁃ **~~Startsida m instruktioner (Marcus)~~** bara lite fix kvar
 - Pop-up som säger att du inte kan lägga till fler (Marcus)
 - Möjlighet att ta bort tillagd stad (Marcus)
 
