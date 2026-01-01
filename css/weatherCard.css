@@ -38,15 +38,6 @@
     font-size: 1.8rem;
 }
 
-@media (min-width: 768px) { 
-    .card {
-        border-radius: var(--card-br) var(--card-br) var(--card-br) var(--card-br);
-        margin-top: 4rem;
-        max-width: 1024px;
-        box-shadow: .2rem 1rem 3rem rgba(0, 0, 0, 0.2);
-    }
-}
-
 /* Weather state gradients */
 
 .weather-rain {
@@ -85,4 +76,15 @@
 .card-weather {
     transition: opacity 0.2s ease;
     opacity: 1;
+}
+
+/* Media queries */
+
+@media (min-width: 768px) { 
+    .card {
+        border-radius: var(--card-br) var(--card-br) var(--card-br) var(--card-br);
+        margin-top: 4rem;
+        max-width: 1024px;
+        box-shadow: .2rem 1rem 3rem rgba(0, 0, 0, 0.2);
+    }
 }

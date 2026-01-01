@@ -48,10 +48,6 @@ export function initMainCard() {
     const pagination = document.createElement("nav");
     pagination.id = "pagination-dots";
 
-    /* pagination.innerHTML = `
-    <button><i class="fa-solid fa-circle"></i></button>
-    `; */
-
     // Remove-knapp
     const removeNav = document.createElement("nav");
     removeNav.id = "card-remove";
@@ -77,7 +73,6 @@ export function initMainCard() {
     mainContainer.appendChild(cContainer);
 
     console.log("Huvudkort skapat");
-
 }
 
 

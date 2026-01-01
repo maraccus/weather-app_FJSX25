@@ -48,7 +48,7 @@ async function startApp() {
         const { city, weather } = result;
         console.log("Got weather data for:", city.name, weather);
 
-        // Add data from api to pagnation
+        // Add data from api to pagination
         let dot = new addCity(city.name, weather.description, Math.round(weather.temperature), weather.time);
         savedCities.push(dot);
         console.log("Added to pagination dots, total saved cities:", savedCities.length);
@@ -75,15 +75,6 @@ async function startApp() {
 async function initNav(){
     console.log("Nav initialized");
 };
-
-// // Wait for DOM to be ready
-// if (document.readyState === "loading") {
-//     document.addEventListener("DOMContentLoaded", initApp);
-// } else {
-//     initApp();
-// }
-
-// startApp();
 
 window.addEventListener("introFinished", () => {
   startApp();
