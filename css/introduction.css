@@ -6,11 +6,12 @@
   font-size: 1.2rem;
   /* margin-top: 1rem; */
   font-weight: 600;
+  margin-bottom: 1rem;
 }
 
 #welcome-container h3 {
   font-size: 1rem;
-  margin-top: 3rem;
+  /* margin-top: 3rem; */
   font-weight: normal;
 }
 
@@ -26,7 +27,7 @@
 #welcome-container #intro-magnifying-glass,
 #welcome-container p {
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(20px);
 }
 
 #welcome-container i {
@@ -50,6 +51,27 @@
 
 #welcome-container p {
   margin-top: 1.2rem;
+}
+
+.intro-infobox {
+  margin-top: 2rem;
+  text-align: center;
+  
+
+  /* border: 1px solid #777; */
+  padding: 2rem;
+
+
+  border-radius: var(--card-br) var(--card-br) var(--card-br) var(--card-br);   
+  box-shadow: .2rem 1rem 2rem rgba(0, 0, 0, 0.15);
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 .fade-in {

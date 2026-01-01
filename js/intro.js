@@ -24,12 +24,23 @@ export async function initIntro() {
     const introH2 = document.createElement("h2");
     introH2.textContent = "Få snabb och enkel väderprognos för svenska städer.";
 
+    welcomeContainer.appendChild(introH1);
+    welcomeContainer.appendChild(introH2);
+
+    const infobox1 = document.createElement("div");
+    infobox1.classList.add("intro-infobox", "weather-rain");
+    welcomeContainer.appendChild(infobox1);
+
     const introH3 = document.createElement("h3");
     introH3.textContent = "Sök på städer med navigationsfältet.";
     
     const introH3icon = document.createElement("i");
     introH3icon.classList.add("fa-solid", "fa-magnifying-glass");
     introH3icon.id = "intro-magnifying-glass";
+
+    const infobox2 = document.createElement("div");
+    infobox2.classList.add("intro-infobox", "weather-rain");
+    welcomeContainer.appendChild(infobox2);
 
     const introH4 = document.createElement("h3");
     introH4.textContent = "Klicka på prickarna för att växla stad.";
@@ -47,12 +58,11 @@ export async function initIntro() {
     introPagination3.classList.add("fa-regular", "fa-circle");
     introPagination3.id = "intro-dot-3";
     
-    welcomeContainer.appendChild(introH1);
-    welcomeContainer.appendChild(introH2);
-    welcomeContainer.appendChild(introH3);
-    welcomeContainer.appendChild(introH3icon);
-    welcomeContainer.appendChild(introH4);
-    welcomeContainer.appendChild(introP);
+    
+    infobox1.appendChild(introH3);
+    infobox1.appendChild(introH3icon);
+    infobox2.appendChild(introH4);
+    infobox2.appendChild(introP);
     introP.appendChild(introPagination1);
     introP.appendChild(introPagination2);
     introP.appendChild(introPagination3);
@@ -78,11 +88,13 @@ export async function initIntro() {
     h2.classList.add("fade-in");
 
     await wait(2000);
+    infobox1.classList.add("fade-in");
     introH3.classList.add("fade-in");
     introH3icon.classList.add("fade-in");
 
     // Fade in pagination
     await wait(2000);
+    infobox2.classList.add("fade-in");
     introH4.classList.add("fade-in");
     p.classList.add("fade-in");
 
