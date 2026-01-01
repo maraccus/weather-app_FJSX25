@@ -22,7 +22,7 @@ export async function initIntro() {
     welcomeContainer.appendChild(introH2);
 
     const infobox1 = document.createElement("div");
-    infobox1.classList.add("intro-infobox", "weather-rain");
+    infobox1.classList.add("intro-infobox", "weather-rain"); // Applies gradient bg
     welcomeContainer.appendChild(infobox1);
 
     const introH3 = document.createElement("h3");

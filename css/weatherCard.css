@@ -47,30 +47,25 @@
 }
 
 .weather-cloudy-rain {
-    background: linear-gradient(to top, #224172, #c7be7c);
+    background: linear-gradient(to top, #adbcd4, #5fafff);
 }
 
 .weather-sun {
-    background: linear-gradient(
-        to bottom,
-        #fef574,
-        #dda120,
-        #4facfe
-    );
+    background: linear-gradient(to bottom, #51b7ff, #feba61);
+
 }
 
 .weather-cloudy {
-    background: linear-gradient(to top, rgb(239, 202, 83), #b4b2b2);
+    background: linear-gradient(to top, rgb(204, 208, 208), #656e97);
 }
 
 .weather-thunder {
     /* background: linear-gradient(to top, rgb(63, 63, 63), #3e428f); */
-    background: linear-gradient(
-        to bottom,
-        rgb(38, 61, 91),
-        #59908f,
-        #1c2071
-    );
+    background: linear-gradient(to bottom, #a2a2a2, #090c1e);
+}
+
+.weather-snow {
+    background: linear-gradient(to top, #6b7071, #def1f9);
 }
 
 .card-city,

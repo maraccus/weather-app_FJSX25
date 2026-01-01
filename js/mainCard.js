@@ -11,7 +11,7 @@ export function initMainCard() {
 
     // Skapa section
     const section = document.createElement("section");
-    section.classList.add("card", "weather-rain");
+    section.classList.add("card", "weather-rain"); // Bakgrund sätts här
 
     // Datum
     const date = document.createElement("p");
