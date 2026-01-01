@@ -7,6 +7,7 @@ async function startApp() {
 
     // Skapa huvudkortet
     initMainCard();
+    
     // Skapa navigationsbaren
     initNavBar();
 
@@ -15,7 +16,6 @@ async function startApp() {
     cardsContainer.classList.add("fade-in");
     navContainer.classList.add("fade-in");
     
-    let weatherCards = [];
     let savedCities = [];
 
     console.log("Initializing app...");
