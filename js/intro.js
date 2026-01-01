@@ -116,8 +116,3 @@ export async function initIntro() {
     welcome.style.display = "none";
     window.dispatchEvent(new Event("introFinished"));
 }
-
-// document.addEventListener("DOMContentLoaded", async () => {
-
-    
-// });
