@@ -87,25 +87,25 @@ export async function initIntro() {
     h1.classList.add("fade-in");
     h2.classList.add("fade-in");
 
-    await wait(2000);
+    await wait(1800);
     infobox1.classList.add("fade-in");
     introH3.classList.add("fade-in");
     introH3icon.classList.add("fade-in");
 
     // Fade in pagination
-    await wait(2000);
+    await wait(1800);
     infobox2.classList.add("fade-in");
     introH4.classList.add("fade-in");
     p.classList.add("fade-in");
 
     // Pagination cirklar ett varv
-    await wait(600);
+    await wait(800);
     for (let i = 0; i < dots.length; i++) {
         dots.forEach((dot, index) => {
             dot.classList.toggle("fa-solid", index === i);
             dot.classList.toggle("fa-regular", index !== i);
         });
-        await wait(1000);
+        await wait(900);
     }
 
     // Fade out welcome
