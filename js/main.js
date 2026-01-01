@@ -3,6 +3,9 @@ import { initMainCard } from "./mainCard.js";
 import { initNavBar } from "./navBar.js";
 import { getWeatherForCity } from "./weatherData.js";
 import { initIntro } from "./intro.js";
+import { initPopup, showPopup } from './popup.js';
+
+let maxCities = 5;
 
 async function startApp() {
 
@@ -32,6 +35,11 @@ async function startApp() {
     }
 
     const handleSearch = async () => {
+        if (savedCities.length >= maxCities) {
+            console.log("Maximum number of cities reached:", maxCities);
+            showPopup("Kan inte lägga till fler städer. Ta bort en befintlig stad först.");
+            return;
+        } else {
         const cityName = userInputHtml.value.trim();
         console.log("Searching for city:", cityName);
         
@@ -55,6 +63,7 @@ async function startApp() {
         console.log("Added to pagination dots, total saved cities:", savedCities.length);
 
         userInputHtml.value = "";
+        }
     };
 
     btnHtml.addEventListener("click", async () => {
@@ -83,6 +92,7 @@ async function initNav(){
 // Starta introduktionen när sidan är laddad
 document.addEventListener("DOMContentLoaded", async () => {
     initIntro();
+    initPopup();
 });
 
 // Starta appen när introduktionen är klar
