@@ -1,4 +1,4 @@
-const runIntro = false;
+const runIntro = true;
 
 export async function initIntro() {
     // Skippa introduktionen om runIntro är false
