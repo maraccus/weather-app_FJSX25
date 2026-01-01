@@ -1,17 +1,11 @@
-export async function initIntro() {
-  /* 
-    Ursprunglig HTML:
+const runIntro = false;
 
-    <div id="welcome-container">
-      <h1>Välkommen till Vädret Nu</h1>
-      <h2>Få snabb och enkel väderprognos för svenska städer</h2>
-      <p>
-        <i class="fa-solid fa-circle"></i>
-        <i class="fa-regular fa-circle"></i>
-        <i class="fa-regular fa-circle"></i>
-      </p>
-    </div>
-    */
+export async function initIntro() {
+    // Skippa introduktionen om runIntro är false
+    if (!runIntro) {
+        window.dispatchEvent(new Event("introFinished"));
+        return;
+    }
 
     // Skapa element till introduktionen
     const welcomeContainer = document.createElement("div");

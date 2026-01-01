@@ -8,6 +8,13 @@
     gap: .5rem;
 }
 
+@media (max-height: 840px) { 
+
+    #pagination-dots {
+        bottom: -2rem;        /* eller top: */
+    }
+}
+
 #pagination-dots button {
     width: 10px;
     height: 10px;
