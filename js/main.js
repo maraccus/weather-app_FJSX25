@@ -2,6 +2,7 @@ import { addCity } from './addCity.js';
 import { initMainCard } from "./mainCard.js";
 import { initNavBar } from "./navBar.js";
 import { getWeatherForCity } from "./weatherData.js";
+import { initIntro } from "./intro.js";
 
 async function startApp() {
 
@@ -76,6 +77,15 @@ async function initNav(){
     console.log("Nav initialized");
 };
 
+// Event listeners
+//////////////////
+
+// Starta introduktionen när sidan är laddad
+document.addEventListener("DOMContentLoaded", async () => {
+    initIntro();
+});
+
+// Starta appen när introduktionen är klar
 window.addEventListener("introFinished", () => {
   startApp();
 });

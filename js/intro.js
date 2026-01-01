@@ -1,6 +1,5 @@
-document.addEventListener("DOMContentLoaded", async () => {
-
-    /* 
+export async function initIntro() {
+  /* 
     Ursprunglig HTML:
 
     <div id="welcome-container">
@@ -79,4 +78,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Dölj welcome
     welcome.style.display = "none";
     window.dispatchEvent(new Event("introFinished"));
-});
+}
+
+// document.addEventListener("DOMContentLoaded", async () => {
+
+    
+// });

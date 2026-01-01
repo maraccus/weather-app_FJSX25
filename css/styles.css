@@ -1,3 +1,9 @@
+@import "weatherCard.css";
+@import "containers.css";
+@import "navigation.css";
+@import "introduction.css";
+@import "popup.css";
+
 * {
     margin: 0;
     padding: 0;
