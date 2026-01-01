@@ -22,7 +22,17 @@ export async function initIntro() {
     introH1.textContent = "Välkommen till Vädret Nu";
 
     const introH2 = document.createElement("h2");
-    introH2.textContent = "Få snabb och enkel väderprognos för svenska städer";
+    introH2.textContent = "Få snabb och enkel väderprognos för svenska städer.";
+
+    const introH3 = document.createElement("h3");
+    introH3.textContent = "Sök på städer med navigationsfältet.";
+    
+    const introH3icon = document.createElement("i");
+    introH3icon.classList.add("fa-solid", "fa-magnifying-glass");
+    introH3icon.id = "intro-magnifying-glass";
+
+    const introH4 = document.createElement("h3");
+    introH4.textContent = "Klicka på prickarna för att växla stad.";
 
     const introP = document.createElement("p");
 
@@ -31,11 +41,17 @@ export async function initIntro() {
     const introPagination3 = document.createElement("i");
 
     introPagination1.classList.add("fa-solid", "fa-circle");
+    introPagination1.id = "intro-dot-1";
     introPagination2.classList.add("fa-regular", "fa-circle");
+    introPagination2.id = "intro-dot-2";
     introPagination3.classList.add("fa-regular", "fa-circle");
+    introPagination3.id = "intro-dot-3";
     
     welcomeContainer.appendChild(introH1);
     welcomeContainer.appendChild(introH2);
+    welcomeContainer.appendChild(introH3);
+    welcomeContainer.appendChild(introH3icon);
+    welcomeContainer.appendChild(introH4);
     welcomeContainer.appendChild(introP);
     introP.appendChild(introPagination1);
     introP.appendChild(introPagination2);
@@ -45,7 +61,11 @@ export async function initIntro() {
     const h1 = welcome.querySelector("h1");
     const h2 = welcome.querySelector("h2");
     const p = welcome.querySelector("p");
-    const dots = welcome.querySelectorAll("i");
+    const dots = [
+        document.getElementById("intro-dot-1"),
+        document.getElementById("intro-dot-2"),
+        document.getElementById("intro-dot-3")
+    ];
 
     const cards = document.getElementById("cards-container");
     const nav = document.getElementById("nav-container");
@@ -57,8 +77,13 @@ export async function initIntro() {
     h1.classList.add("fade-in");
     h2.classList.add("fade-in");
 
+    await wait(2000);
+    introH3.classList.add("fade-in");
+    introH3icon.classList.add("fade-in");
+
     // Fade in pagination
-    await wait(900);
+    await wait(2000);
+    introH4.classList.add("fade-in");
     p.classList.add("fade-in");
 
     // Pagination cirklar ett varv
@@ -68,7 +93,7 @@ export async function initIntro() {
             dot.classList.toggle("fa-solid", index === i);
             dot.classList.toggle("fa-regular", index !== i);
         });
-        await wait(700);
+        await wait(1000);
     }
 
     // Fade out welcome

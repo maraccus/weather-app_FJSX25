@@ -2,6 +2,18 @@
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
+#welcome-container h2 {
+  font-size: 1.2rem;
+  /* margin-top: 1rem; */
+  font-weight: 600;
+}
+
+#welcome-container h3 {
+  font-size: 1rem;
+  margin-top: 3rem;
+  font-weight: normal;
+}
+
 #welcome-container.fade-out {
   opacity: 0;
   transform: translateY(-20px);
@@ -10,6 +22,8 @@
 
 #welcome-container h1,
 #welcome-container h2,
+#welcome-container h3,
+#welcome-container #intro-magnifying-glass,
 #welcome-container p {
   opacity: 0;
   transform: translateY(10px);
@@ -27,6 +41,15 @@
 #welcome-container i.fa-regular {
   transform: scale(1);
   opacity: 0.6;
+}
+
+#welcome-container #intro-magnifying-glass {
+  margin-top: 1rem;
+  font-size: 2rem;
+}
+
+#welcome-container p {
+  margin-top: 1.2rem;
 }
 
 .fade-in {
