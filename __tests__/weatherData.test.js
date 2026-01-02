@@ -1,59 +1,78 @@
-import { allCities, loadCities, findCityByName } from "../js/weatherData.js";
-import { jest } from "@jest/globals";
+import { jest } from "@jest/globals";  // <-- VIKTIGT! Lägg till denna rad högst upp
+import { getWeatherForCity } from "../js/weatherData.js";
 
-// Mocka global fetch direkt – detta fångar alla fetch-anrop i testen
-global.fetch = jest.fn();
-
-describe("weatherData.js", () => {
-  // Rensa allCities och fetch-mocken innan varje test
+describe("weatherData.js - getWeatherForCity", () => {
   beforeEach(() => {
-    allCities.length = 0;
-    fetch.mockClear();
+    global.fetch = jest.fn();
   });
 
-  it("findCityByName hittar stad oavsett versaler/gemener", () => {
-    allCities.push(
-      { name: "Stockholm", latitude: 59.33, longitude: 18.06 },
-      { name: "Göteborg", latitude: 57.71, longitude: 11.97 }
-    );
-
-    expect(findCityByName("stockholm")).toEqual({
-      name: "Stockholm",
-      latitude: 59.33,
-      longitude: 18.06,
-    });
-
-    expect(findCityByName("GÖTEBORG")).toEqual({
-      name: "Göteborg",
-      latitude: 57.71,
-      longitude: 11.97,
-    });
-
-    expect(findCityByName("Malmö")).toBeUndefined();
-    expect(findCityByName("")).toBeUndefined();
-    expect(findCityByName(" ")).toBeUndefined();
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
-  it("loadCities hämtar och lagrar städer", async () => {
-    const mockCities = [
-      { name: "Uppsala", latitude: 60.13, longitude: 17.63 },
-      { name: "Linköping", latitude: 58.41, longitude: 15.62 },
-    ];
+  it("hämtar väderdata korrekt för en giltig stad", async () => {
+    global.fetch
+      .mockResolvedValueOnce({
+        ok: true,
+        json: jest.fn().mockResolvedValue({
+          results: [
+            {
+              name: "Stockholm",
+              latitude: 59.33,
+              longitude: 18.06,
+              country: "Sweden",
+            },
+          ],
+        }),
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        json: jest.fn().mockResolvedValue({
+          current_weather: {
+            temperature: 5.2,
+            weathercode: 3,
+            time: "2026-01-02T12:00",
+          },
+        }),
+      });
 
-    // Mocka fetch så att det returnerar vår mockdata
-    fetch.mockResolvedValue({
+    const result = await getWeatherForCity("Stockholm");
+
+    expect(global.fetch).toHaveBeenCalledTimes(2);
+    expect(global.fetch.mock.calls[0][0]).toContain("geocoding-api.open-meteo.com");
+    expect(global.fetch.mock.calls[1][0]).toContain("api.open-meteo.com");
+
+    expect(result).toMatchObject({
+      city: expect.objectContaining({
+        name: "Stockholm",
+        latitude: 59.33,
+        longitude: 18.06,
+      }),
+      weather: {
+        temperature: 5.2,
+        description: "Mulet",
+        weathercode: 3,
+        time: "2026-01-02T12:00",
+      },
+    });
+  });
+
+  it("returnerar null om staden inte hittas", async () => {
+    global.fetch.mockResolvedValueOnce({
       ok: true,
-      json: jest.fn().mockResolvedValue(mockCities),
+      json: jest.fn().mockResolvedValue({ results: [] }),
     });
 
-    await loadCities();
+    const result = await getWeatherForCity("Okändstad123");
 
-    // Kontrollera att fetch anropades med rätt URL
-    expect(fetch).toHaveBeenCalledWith(
-      "http://kontoret.onvo.se:10480/GetCities"
-    );
+    expect(result).toBeNull();
+  });
 
-    // Kontrollera att städerna lagrades
-    expect(allCities).toEqual(mockCities);
+  it("hanterar nätverksfel och returnerar null", async () => {
+    global.fetch.mockRejectedValueOnce(new Error("Nätverksfel"));
+
+    const result = await getWeatherForCity("Stockholm");
+
+    expect(result).toBeNull();
   });
 });

@@ -1,5 +1,9 @@
 const runIntro = true;
 
+/**
+ * Kör en valfri introduktionssekvens med fade-in animationer och exempel på sök + pagination.
+ * Avfyrar en custom event "introFinished" när sekvensen är klar.
+ */
 export async function initIntro() {
     // Skippa introduktionen om runIntro är false
     if (!runIntro) {

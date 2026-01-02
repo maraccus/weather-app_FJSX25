@@ -1,5 +1,19 @@
 import { ApiService } from "./api/api.js";
 
+/**
+ * Hämtar aktuellt väder för en given stad genom att först söka koordinater via Open-Meteo Geocoding API
+ * och sedan hämta väderdata via Open-Meteo Forecast API.
+ *
+ * @param {string} cityName - Namnet på staden att söka väder för (t.ex. "Stockholm"). Ej skiftlägeskänsligt.
+ * @returns {Promise<Object|null>} Ett objekt med två egenskaper:
+ *   - city: Objekt med stadens namn, latitude och longitude
+ *   - weather: Objekt med temperature, description, weathercode och time
+ *   Returnerar null om staden inte hittas, API-fel inträffar eller om fetch misslyckas.
+ * @example
+ * const result = await getWeatherForCity("Göteborg");
+ * // result = { city: {...}, weather: {...} }
+ */
+
 export async function getWeatherForCity(cityName) {
   if (!cityName) return null;
 

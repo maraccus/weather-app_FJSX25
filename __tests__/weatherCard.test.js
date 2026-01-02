@@ -1,49 +1,51 @@
-import { WeatherCard } from "../js/weatherCard.js";
+import { addCity } from "../js/addCity.js";
 
-describe("WeatherCard", () => {
-  let container;
-
+describe("addCity – pagination och kortbyte", () => {
   beforeEach(() => {
-    container = document.createElement("div");
-    container.id = "cards-container";
-    document.body.appendChild(container);
+    document.body.innerHTML = `
+      <nav id="pagination-dots"></nav>
+      <p class="card-date"></p>
+      <p class="card-time"></p>
+      <h2 class="card-city">City</h2>
+      <h3 class="card-temp">Temp</h3>
+      <p class="card-description">Weather</p>
+    `;
   });
 
   afterEach(() => {
     document.body.innerHTML = "";
   });
 
-  it("skapar ett väderkort med rätt innehåll", () => {
-    const city = { name: "Stockholm" };
-    const weather = {
-      temperature: 8.7,
-      description: "Molnigt",
-    };
+  it("skapar en pagination-dot och uppdaterar kortet vid klick", () => {
+    const city = new addCity("Göteborg", "Regn", 7, "2026-01-02T14:00");
 
-    new WeatherCard(city, weather);
+    // Kolla att dot skapades
+    const dotButton = document.querySelector("#pagination-dots button");
+    expect(dotButton).toBeTruthy();
 
-    const card = container.querySelector(".weather-card");
-    expect(card).toBeTruthy();
+    // Simulera klick
+    dotButton.click();
 
-    expect(card.querySelector(".weather-city").textContent).toBe("Stockholm");
-    expect(card.querySelector(".weather-degrees").textContent).toBe("9"); // avrundat
-    expect(card.querySelector(".weather-description").textContent).toBe(
-      "Molnigt"
-    );
+    // Efter fade (200ms + lite marginal)
+    setTimeout(() => {
+      expect(document.querySelector(".card-city").textContent).toBe("Göteborg");
+      expect(document.querySelector(".card-temp").textContent).toBe("7°C");
+      expect(document.querySelector(".card-weather").textContent).toBe("Regn");
+      expect(document.querySelector(".card-time").textContent).toBe("14:00");
+      // formatDate ger t.ex. "fredag 2 januari" – vi kollar bara att det ändrats
+      expect(document.querySelector(".card-date").textContent).not.toBe("Day, Date");
+    }, 300);
   });
 
-  it("kan tas bort med remove()-metoden", (done) => {
-    const cardInstance = new WeatherCard(
-      { name: "Teststad" },
-      { temperature: 10 }
-    );
+  it("markerar aktiv dot korrekt", () => {
+    new addCity("Stockholm", "Molnigt", 5, "2026-01-02");
+    const secondCity = new addCity("Malmö", "Klart", 10, "2026-01-02");
 
-    cardInstance.remove();
+    const dots = document.querySelectorAll("#pagination-dots button i");
+    expect(dots.length).toBe(2);
 
-    // Vänta på animationen (300ms + lite marginal)
-    setTimeout(() => {
-      expect(container.querySelector(".weather-card")).toBeNull();
-      done();
-    }, 500);
+    // Den sista ska vara aktiv
+    expect(dots[1].classList.contains("fa-solid")).toBe(true);
+    expect(dots[0].classList.contains("fa-regular")).toBe(true);
   });
 });

@@ -1,6 +1,22 @@
 import { formatDate, formatTime } from './dateUtils.js';
 
+/**
+ * Klass som hanterar en tillagd stad i väderappen.
+ * Skapar en pagination-dot (prick) i navigeringen och ansvarar för att uppdatera huvudkortet
+ * när användaren klickar på pricken.
+ */
+
 export class addCity {
+
+    /**
+     * Skapar en ny stadsinstans och lägger till en prick i pagination-menyn.
+     *
+     * @param {string} city - Stadens namn (t.ex. "Stockholm")
+     * @param {string} weather - Väderbeskrivning (t.ex. "Molnigt")
+     * @param {number} temp - Avrundad temperatur i grader Celsius
+     * @param {string} time - ISO-tidsträng för väderobservationen (används för datum/tid-formatering)
+     */
+
     constructor(city, weather, temp, time) {
         this.city = city;
         this.weather = weather;
@@ -36,6 +52,11 @@ export class addCity {
             console.warn('Kunde inte lägga till pagination dot för sparad stad!');
         }
     }
+    /**
+     * Uppdaterar huvudkortet med data för denna stad.
+     * Använder fade-effekt och formaterar datum/tid med dateUtils.
+     * Markerar också aktuell prick som aktiv.
+     */
 
     switchToCurrent() {
         const dateEl = document.querySelector('.card-date');
@@ -64,6 +85,12 @@ export class addCity {
             });
         }, 200);
     }
+    /**
+     * Markererar den aktuella pagination-pricken som aktiv (fylld cirkel)
+     * och avmarkerar alla andra.
+     *
+     * @param {HTMLElement} activeIcon - Ikon-elementet för den aktiva pricken
+     */
 
     setActiveDot(activeIcon) {
         const allDots = document.querySelectorAll('#pagination-dots button i');
