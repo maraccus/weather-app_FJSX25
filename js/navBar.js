@@ -1,3 +1,7 @@
+/**
+ * Skapar och lägger till navigationsfältet med sökinput och sökknapp.
+ * Fältet placeras i #nav-container som skapas i main-container.
+ */
 export function initNavBar(){
     console.log("NavBar loading in...");
 

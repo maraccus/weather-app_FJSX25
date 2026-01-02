@@ -1,3 +1,8 @@
+/**
+ * Skapar och lägger till huvudväderkortet i DOM:en.
+ * Bygger upp alla element (datum, tid, stad, ikon, temperatur, beskrivning, pagination och remove-knapp)
+ * och placerar dem i #cards-container.
+ */
 export function initMainCard() {
 
     // Skapa main-container
