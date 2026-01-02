@@ -62,7 +62,7 @@ async function startApp() {
         console.log("Got weather data for:", city.name, weather);
 
         // Add data from api to pagination
-        let dot = new addCity(city.name, weather.description, Math.round(weather.temperature), weather.time);
+        let dot = new addCity(city.name, weather.description, Math.round(weather.temperature), weather.time, weather.weathercode);
         savedCities.push(dot);
         console.log("Added to pagination dots, total saved cities:", savedCities.length);
 

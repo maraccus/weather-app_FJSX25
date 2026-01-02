@@ -17,11 +17,12 @@ export class addCity {
      * @param {string} time - ISO-tidsträng för väderobservationen (används för datum/tid-formatering)
      */
 
-    constructor(city, weather, temp, time) {
+    constructor(city, weather, temp, time, weathercode) {
         this.city = city;
         this.weather = weather;
         this.temp = temp;
         this.time = time;
+        this.weathercode = weathercode;
 
         this.addCityCard();
     }
@@ -64,6 +65,45 @@ export class addCity {
         const city = document.querySelector(".card-city");
         const temp = document.querySelector(".card-temp");
         const weather = document.querySelector(".card-description");
+        const card = document.querySelector(".card");
+        const icon = document.querySelector(".card-icon");
+
+        card.classList.remove("weather-snow", "weather-rain", "weather-thunder", "weather-sun", "weather-cloudy", "weather-clear");
+
+        switch (this.weather){
+            case "Snöfall":
+                card.classList.toggle("weather-snow");
+                icon.src = "./assets/images/snow.png";
+                break;
+            case "Regn":
+                card.classList.toggle("weather-rain");
+                icon.src = "./assets/images/rain.png";
+                break;
+            case "Åska":
+                card.classList.toggle("weather-thunder");
+                icon.src = "./assets/images/thunderstorm.png";
+                break;
+            case "Mulet":
+                card.classList.toggle("weather-cloudy");
+                icon.src = "./assets/images/mostly-cloudy.png";
+                break;
+            case "Klart":
+                card.classList.toggle("weather-sun");
+                icon.src = "./assets/images/partly-cloudy.png";
+                break;
+            case "Duggregn":
+                card.classList.toggle("weather-rain");
+                icon.src = "./assets/images/rain.png";
+                break;
+            case "Lätt molnigt":
+                card.classList.toggle("weather-cloudy");
+                icon.src = "./assets/images/partly-cloudy.png";
+                break;
+            case "Molnigt":
+                card.classList.toggle("weather-cloudy");
+                icon.src = "./assets/images/mostly-cloudy.png";
+            break;
+        }
 
         const elements = [dateEl, timeEl, city, temp, weather];
 
