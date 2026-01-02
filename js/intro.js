@@ -1,4 +1,4 @@
-const runIntro = false;
+const runIntro = true;
 
 /**
  * Kör en valfri introduktionssekvens med fade-in animationer och exempel på sök + pagination.
