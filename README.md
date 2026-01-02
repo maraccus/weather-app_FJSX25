@@ -1,20 +1,20 @@
-# Väderapplikationen
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-En enkel och visuellt tilltalande väderapplikation byggd som ett skolprojekt inom Fullstack/Frontend-utbildningen. Applikationen hämtar aktuell väderdata från ett externt API och presenterar den på ett användarvänligt sätt.
+# Väderapplikationen "Vädret nu"
 
-## 📸 Skärmdumpar
+En modern och responsiv väderapp byggd i ren HTML, CSS och JavaScript. Appen hämtar realtidsväder från Open-Meteo API och låter användaren söka och växla mellan flera städer med snygg pagination. Projektet är skapat som ett slutprojekt inom Fullstack- samt Frontend-utbildningen på Chas Academy för att demonstrera kursens lärandemål i praktiken.
 
-<!-- Lägg till 2–4 screenshots här när ni har dem -->
+## Förhandsvisning
 
-![Hemskärm](/assets/Screenshots/WA_Landscape.webp)
-![Mobilvy](/assets/Screenshots/WA_Portrait.webp)
+![Hemskärm](/assets/readmeImages/weatherApp.webp)
+![Mobilvy](/assets/readmeImages/weatherApp_mobile.webp)
 
-## 🚀 Funktioner
+## Funktioner
 
 Projektet demonstrerar uppnåendet av kursens lärandemål genom följande funktioner, med koppling till relevanta kunskaper och färdigheter:
 
 - **Sökning efter väder för valfri stad/plats**: Interaktiv sökning via formulär med API-integration.
-- **Visning av aktuellt väder (temperatur, väderbeskrivning, vind, luftfuktighet osv.)**: Dynamisk rendering med modulära komponenter.
+- **Visning av aktuellt väder (temperatur, väderbeskrivning)**: Dynamisk rendering med modulära komponenter.
 - **Responsiv design – fungerar bra på både desktop och mobil**: Anpassad layout för olika enheter.
 - **Tillgänglighetsanpassningar enligt WCAG**: ARIA och kontrast för inkludering.
 - **Prestandaoptimering och säkerhet**: Kodanalys och input-validering.
@@ -24,13 +24,13 @@ Projektet demonstrerar uppnåendet av kursens lärandemål genom följande funkt
 
 Genom dessa har vi uppnått alla kursens lärandemål på en tillfredsställande nivå.
 
-## 🛠️ Teknologier
+## Teknologier
 
 - **Frontend**: HTML, CSS, JavaScript.
-- **API**: OSÄKER PÅ VAD KALLA
-- **Verktyg**: Git, GitHub
+- **API**: Open-Meteo API.
+- **Verktyg**: Git, GitHub.
 
-## 📦 Installation och körning
+## Installation och körning
 
 Följ stegen nedan för att köra projektet lokalt:
 
@@ -43,7 +43,7 @@ Följ stegen nedan för att köra projektet lokalt:
 2. Gå in i projektmappen:
 
    ```bash
-   cd https://github.com/maraccus/weather-app_FJSX25
+   cd weather-app_FJSX25
    ```
 
 3. Installera beroenden:
@@ -52,30 +52,23 @@ Följ stegen nedan för att köra projektet lokalt:
    npm install
    ```
 
-4. Skapa en `.env`-fil (om ni använder API-nyckel):
+4. Öppna filen `index.html` i webbläsaren eller starta en lokal server (t.ex. med VS Code Live Server-extension).
 
-   ```env
-   VITE_WEATHER_API_KEY=din-api-nyckel-här
-   ```
+5. Öppna http://localhost:3000 (eller den port som visas) i webbläsaren.
 
-5. Starta utvecklingsservern:
+## API-information
 
-   ```bash
-   npm run dev
-   ```
+Vi använder det öppna och kostnadsfria [Open-Meteo API](https://open-meteo.com/) för både geocoding (stad → koordinater) och aktuell väderdata. Ingen API-nyckel krävs, och tjänsten är stabil och alltid tillgänglig.
 
-6. Öppna http://localhost:3000 (eller den port som visas) i webbläsaren.
+**Bakgrund till val av API**  
+Projektet inleddes i samarbete med Systemutvecklarnas klass, där vi initialt använde deras custom-byggda API (endpoints: `/GetCities`, `/GetWeather`, `/GetSurprise`). Detta gav värdefull erfarenhet av samarbete mellan klasser och integration med en intern server. På grund av återkommande stabilitetsproblem (servern var periodvis nere) valde vi att byta till Open-Meteo som primär källa. Detta beslut ökade appens tillförlitlighet och tillgänglighet utan att kompromissa med funktionalitet. Koden är strukturerad så att ett byte tillbaka skulle vara möjligt vid behov.
 
-## 🌤️ API-information
+## Team
 
-Vi använder OSÄKER PÅ VAD KALLA API för att hämta väderdata.
+- Pontus Ingenius – [Backend/API-integration]
+- Marcus Johansson – [Frontend/Design]
+- Tomac Jansson – [Jest, dokumentation, Kanban, WCAG]
 
-## 👥 Team
-
-- Pontus Ingenius – [Roll]
-- Marcus Johansson – [Roll]
-- Tomac Jansson – [Roll]
-
-## 📄 Licens
+## Licens
 
 Detta projekt är licensierat under MIT License – se [LICENSE](LICENSE) för mer information.
