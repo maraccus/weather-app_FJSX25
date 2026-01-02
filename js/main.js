@@ -6,11 +6,13 @@ import { initIntro } from "./intro.js";
 import { initPopup, showPopup } from './popup.js';
 
 let maxCities = 5;
+let savedCities = [];
 
 async function startApp() {
 
     // Skapa huvudkortet
     initMainCard();
+    addDefaultCity();
     
     // Skapa navigationsbaren
     initNavBar();
@@ -20,10 +22,12 @@ async function startApp() {
     cardsContainer.classList.add("fade-in");
     navContainer.classList.add("fade-in");
     
-    let savedCities = [];
+    
 
     console.log("Initializing app...");
     
+    
+
     console.log("App ready");
 
     const btnHtml = document.querySelector("#searchBtn");
@@ -85,6 +89,19 @@ async function startApp() {
 async function initNav(){
     console.log("Nav initialized");
 };
+
+async function addDefaultCity(){
+    console.log("Default city added");
+
+    const result = await getWeatherForCity("Stockholm");
+    const { city, weather } = result;
+    console.log("Got weather data for:", city.name, weather);
+
+    // Add data from api to pagination
+    let dot = new addCity(city.name, weather.description, Math.round(weather.temperature), weather.time);
+    savedCities.push(dot);
+    
+}
 
 // Event listeners
 //////////////////

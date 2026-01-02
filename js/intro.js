@@ -1,4 +1,4 @@
-const runIntro = true;
+const runIntro = false;
 
 /**
  * Kör en valfri introduktionssekvens med fade-in animationer och exempel på sök + pagination.
@@ -26,7 +26,7 @@ export async function initIntro() {
     welcomeContainer.appendChild(introH2);
 
     const infobox1 = document.createElement("div");
-    infobox1.classList.add("intro-infobox", "weather-rain"); // Applies gradient bg
+    infobox1.classList.add("intro-infobox", "weather-snow"); // Applies gradient bg
     welcomeContainer.appendChild(infobox1);
 
     const introH3 = document.createElement("h3");
