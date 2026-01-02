@@ -16,7 +16,7 @@ export function initMainCard() {
 
     // Skapa section
     const section = document.createElement("section");
-    section.classList.add("card", "weather-rain"); // Bakgrund sätts här
+    section.classList.add("card", "weather-snow"); // Bakgrund sätts här
 
     // Datum
     const date = document.createElement("p");
@@ -36,7 +36,7 @@ export function initMainCard() {
     // Ikon
     const icon = document.createElement("img");
     icon.className = "card-icon";
-    icon.src = "assets/images/rain.png";
+    icon.src = "assets/images/snow.png";
     icon.alt = "";
 
     // Temperatur

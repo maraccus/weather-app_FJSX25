@@ -63,7 +63,7 @@ export class addCity {
         const timeEl = document.querySelector('.card-time');
         const city = document.querySelector(".card-city");
         const temp = document.querySelector(".card-temp");
-        const weather = document.querySelector(".card-weather");
+        const weather = document.querySelector(".card-description");
 
         const elements = [dateEl, timeEl, city, temp, weather];
 
