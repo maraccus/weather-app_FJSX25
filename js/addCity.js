@@ -55,26 +55,34 @@ export class addCity {
   }
 
   removeCity(savedCities){
-    console.log("Removing city: " + this.city);
+    console.log("Removing city:", this.city);
 
-    const container = document.getElementById("pagination-dots");
+  const container = document.getElementById("pagination-dots");
+  if (!container || !this.element) return;
 
-    if (container && this.element) {
-      const removedIndex = this.id;
+  const removedIndex = this.id;
 
-      // 1. Remove from array
-      savedCities.splice(removedIndex, 1);
+  // 1. Remove from array
+  savedCities.splice(removedIndex, 1);
 
-      // 2. Remove DOM element
-      container.removeChild(this.element);
+  // 2. Remove DOM element
+  container.removeChild(this.element);
 
-      // 3. Fix IDs for cities after the removed one
-      for (let i = removedIndex; i < savedCities.length; i++) {
-        savedCities[i].id -= 1;
-      }
+  // 3. Fix IDs
+  for (let i = removedIndex; i < savedCities.length; i++) {
+    savedCities[i].id -= 1;
+  }
 
-  } else {
-    console.warn("Kunde inte ta bort pagination dot för stad!");
+  // 4. Choose next city (or previous)
+  if (savedCities.length > 0) {
+    const nextIndex =
+      removedIndex < savedCities.length
+        ? removedIndex           // next exists
+        : removedIndex - 1;      // fallback to previous
+
+    const nextCity = savedCities[nextIndex];
+    nextCity.switchToCurrent();
+    nextCity.setActiveDot(nextCity.element.querySelector("i"));
   }
   }
   /**
