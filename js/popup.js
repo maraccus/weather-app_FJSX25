@@ -23,7 +23,8 @@ export function initPopup() {
  */
 export function showPopup(popuptext) {
   const popup = document.getElementById("warning-popup");
-  popup.innerHTML = "<i class=\"fa-solid fa-triangle-exclamation\"></i> " + popuptext;
+  popup.innerHTML =
+    '<i class="fa-solid fa-triangle-exclamation"></i> ' + popuptext;
 
   // Add the show class
   popup.classList.add("show");
