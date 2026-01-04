@@ -88,3 +88,5 @@ export function initMainCard() {
 
   console.log("Huvudkort skapat");
 }
+
+

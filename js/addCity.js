@@ -23,6 +23,7 @@ export class addCity {
     this.temp = temp;
     this.time = time;
     this.weathercode = weathercode;
+    this.id = null;
 
     this.addCityCard();
   }
@@ -51,6 +52,30 @@ export class addCity {
     } else {
       console.warn("Kunde inte lägga till pagination dot för sparad stad!");
     }
+  }
+
+  removeCity(savedCities){
+    console.log("Removing city: " + this.city);
+
+    const container = document.getElementById("pagination-dots");
+
+    if (container && this.element) {
+      const removedIndex = this.id;
+
+      // 1. Remove from array
+      savedCities.splice(removedIndex, 1);
+
+      // 2. Remove DOM element
+      container.removeChild(this.element);
+
+      // 3. Fix IDs for cities after the removed one
+      for (let i = removedIndex; i < savedCities.length; i++) {
+        savedCities[i].id -= 1;
+      }
+
+  } else {
+    console.warn("Kunde inte ta bort pagination dot för stad!");
+  }
   }
   /**
    * Uppdaterar huvudkortet med data för denna stad.

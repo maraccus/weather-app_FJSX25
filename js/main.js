@@ -9,14 +9,26 @@ import { getFavorites, toggleFavorite } from "./localStorage.js";
 let maxCities = 5;
 let savedCities = [];
 let currentCity = null;
+let selectedCity = null;
 
 async function startApp() {
   // Skapa huvudkortet
   initMainCard();
   await addDefaultCity();
 
+  
+  const rmv = document.getElementById("card-remove");
+  rmv.addEventListener("click", () => {
+  if (savedCities.length === 1) {
+    showPopup("Minst en stad måste finnas kvar.");
+  } else {
+    window.currentCity.removeCity(savedCities);
+  }
+});
+
   // Skapa navigationsbaren
   initNavBar();
+
 
   const cardsContainer = document.getElementById("cards-container");
   const navContainer = document.getElementById("nav-container");
@@ -84,10 +96,17 @@ async function startApp() {
       weather.weathercode
     );
     savedCities.push(dot);
+
+    let savedId = savedCities.length;
+    savedCities[savedId - 1].id = savedId - 1;
     console.log(
       "Added to pagination dots, total saved cities:",
       savedCities.length
     );
+
+    for (let i = 0; i < savedCities.length; i++) {
+      console.log(savedCities[i].city, ", ID:", savedCities[i].id);
+    }
 
     userInputHtml.value = "";
   };
@@ -130,6 +149,8 @@ async function initNav() {}
 
 async function addDefaultCity() {
   const favorites = getFavorites();
+
+  selectedCity = 0;
 
   if (favorites.length > 0) {
     // Laddar lista med favorit städer
