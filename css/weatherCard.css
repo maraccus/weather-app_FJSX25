@@ -22,14 +22,14 @@
 }
 
 .card .card-city {
-    margin-top: 0.6rem;
+    margin-top: .4rem;
     font-size: 3.3rem;
 }
 
 .card .card-icon {
     width: 15rem;
     object-fit: contain;
-    margin-top: 3rem;
+    /* background-color: tomato; */
 }
 
 .card .card-temp {
@@ -133,6 +133,28 @@
 
     .card .card-icon {
         width: 12rem;
-        margin-top: 3rem;
+    }
+}
+
+@media (max-height: 900px) { 
+
+    .card .card-city {
+        font-size: 3rem;
+    }
+
+    .card .card-date {
+        font-size: .8rem;
+    }
+
+    .card .card-description {
+        font-size: 1.2rem;
+    }
+
+    .card .card-temp {
+        font-size: 5rem;
+    }
+
+    .card .card-icon {
+        width: 12rem;
     }
 }

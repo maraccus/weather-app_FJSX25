@@ -1,6 +1,6 @@
 #pagination-dots {
     position: absolute;
-    bottom: 2rem;        /* eller top: */
+    bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -8,12 +8,12 @@
     gap: .5rem;
 }
 
-@media (max-height: 840px) { 
+/* @media (max-height: 840px) { 
 
     #pagination-dots {
-        bottom: -2rem;        /* eller top: */
+        bottom: -2rem;       
     }
-}
+} */
 
 #pagination-dots button {
     width: 10px;
