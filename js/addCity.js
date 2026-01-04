@@ -17,13 +17,13 @@ export class addCity {
    * @param {string} time - ISO-tidsträng för väderobservationen (används för datum/tid-formatering)
    */
 
-  constructor(city, weather, temp, time, weathercode) {
+  constructor(city, weather, temp, time, weathercode, id) {
     this.city = city;
     this.weather = weather;
     this.temp = temp;
     this.time = time;
     this.weathercode = weathercode;
-    this.id = null;
+    this.id = id !== undefined ? id : null;
 
     this.addCityCard();
   }

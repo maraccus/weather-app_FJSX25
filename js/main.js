@@ -182,6 +182,7 @@ async function addDefaultCity() {
       weather.time
     );
     savedCities.push(dot);
+    dot.id = 0;
   }
 }
 
