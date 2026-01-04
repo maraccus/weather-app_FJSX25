@@ -6,11 +6,15 @@
  * @param {string} [locale='sv-SE'] - Språkkod, default svenska
  * @returns {string} Formaterat datum med stor begynnelsebokstav. Returnerar tom sträng vid ogiltig input.
  */
-export function formatDate(isoOrDate, locale = 'sv-SE') {
-  if (!isoOrDate) return '';
+export function formatDate(isoOrDate, locale = "sv-SE") {
+  if (!isoOrDate) return "";
   const d = new Date(isoOrDate);
-  if (isNaN(d)) return '';
-  const str = d.toLocaleDateString(locale, { weekday: 'long', day: 'numeric', month: 'long' });
+  if (isNaN(d)) return "";
+  const str = d.toLocaleDateString(locale, {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+  });
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 /**
@@ -21,9 +25,9 @@ export function formatDate(isoOrDate, locale = 'sv-SE') {
  * @param {string} [locale='sv-SE'] - Språkkod, default svenska
  * @returns {string} Formaterat klockslag (timme:minut). Returnerar tom sträng vid ogiltig input.
  */
-export function formatTime(isoOrDate, locale = 'sv-SE') {
-  if (!isoOrDate) return '';
+export function formatTime(isoOrDate, locale = "sv-SE") {
+  if (!isoOrDate) return "";
   const d = new Date(isoOrDate);
-  if (isNaN(d)) return '';
-  return d.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' });
+  if (isNaN(d)) return "";
+  return d.toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit" });
 }
