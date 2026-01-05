@@ -1,4 +1,5 @@
 import { ApiService } from "./api/api.js";
+import { convertWmoCode } from "./utils/weatherCodeUtils.js";
 
 /**
  * Hämtar aktuellt väder för en given stad genom att först söka koordinater via Open-Meteo Geocoding API
@@ -13,7 +14,6 @@ import { ApiService } from "./api/api.js";
  * const result = await getWeatherForCity("Göteborg");
  * // result = { city: {...}, weather: {...} }
  */
-
 export async function getWeatherForCity(cityName) {
   if (!cityName) return null;
 
@@ -38,11 +38,13 @@ export async function getWeatherForCity(cityName) {
     const forecastJson = await forecastApi.fetchData();
 
     const cw = forecastJson.current_weather || {};
+    const { description, icon } = convertWmoCode(cw.weathercode);
     const weather = {
       temperature: cw.temperature ?? null,
-      description: convertWmo(cw.weathercode),
+      description,
       weathercode: cw.weathercode ?? null,
       time: cw.time ?? null,
+      icon,
     };
 
     return { city, weather };
@@ -50,28 +52,4 @@ export async function getWeatherForCity(cityName) {
     console.error("Kunde inte hämta väder:", err);
     return null;
   }
-}
-
-function convertWmo(code) {
-  const mapping = {
-    0: "Klart",
-    1: "Lätt molnigt",
-    2: "Molnigt",
-    3: "Mulet",
-    45: "Dimma",
-    48: "Dimma",
-    51: "Duggregn",
-    53: "Duggregn",
-    55: "Duggregn",
-    61: "Regn",
-    63: "Regn",
-    65: "Regn",
-    71: "Snöfall",
-    73: "Snöfall",
-    75: "Snöfall",
-    95: "Åska",
-    96: "Åska",
-    99: "Åska",
-  };
-  return mapping[code] || "Okänt väder";
 }

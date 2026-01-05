@@ -1,5 +1,7 @@
 import { formatDate, formatTime } from "./dateUtils.js";
-import { isFavorite, toggleFavorite } from "./localStorage.js";
+import { isFavorite } from "./localStorage.js";
+import { convertWmoCode, getWeatherClass } from "./utils/weatherCodeUtils.js";
+import { fadeOutInUpdate } from "./utils/domUtils.js";
 
 /**
  * Klass som hanterar en tillagd stad i väderappen.
@@ -15,6 +17,8 @@ export class addCity {
    * @param {string} weather - Väderbeskrivning (t.ex. "Molnigt")
    * @param {number} temp - Avrundad temperatur i grader Celsius
    * @param {string} time - ISO-tidsträng för väderobservationen (används för datum/tid-formatering)
+   * @param {number} [weathercode] - WMO-väderkodd för att bestämma ikon
+   * @param {number} [id] - Stad-ID för pagination
    */
 
   constructor(city, weather, temp, time, weathercode, id) {
@@ -29,15 +33,13 @@ export class addCity {
   }
 
   addCityCard() {
-    console.log("Creating pagination dot for new city: " + this.city);
-
     this.element = document.createElement("button");
-
-    this.element.setAttribute("aria-label", `Växla till ${this.city}`); // För VoiceOver
+    this.element.setAttribute("aria-label", `Växla till väder i ${this.city}`);
+    this.element.setAttribute("type", "button");
 
     const dotIcon = document.createElement("i");
     dotIcon.classList.add("fa-regular", "fa-circle");
-    dotIcon.setAttribute("aria-hidden", "true"); // Ikoner är dekorativa
+    dotIcon.setAttribute("aria-hidden", "true");
 
     this.element.appendChild(dotIcon);
 
@@ -52,14 +54,18 @@ export class addCity {
         this.switchToCurrent();
         this.setActiveDot(dotIcon);
       });
-    } else {
-      console.warn("Kunde inte lägga till pagination dot för sparad stad!");
+
+      this.element.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          this.switchToCurrent();
+          this.setActiveDot(dotIcon);
+        }
+      });
     }
   }
 
   removeCity(savedCities) {
-    console.log("Removing city:", this.city);
-
     const container = document.getElementById("pagination-dots");
     if (!container || !this.element) return;
 
@@ -80,8 +86,8 @@ export class addCity {
     if (savedCities.length > 0) {
       const nextIndex =
         removedIndex < savedCities.length
-          ? removedIndex // next exists
-          : removedIndex - 1; // fallback to previous
+          ? removedIndex
+          : removedIndex - 1;
 
       const nextCity = savedCities[nextIndex];
       nextCity.switchToCurrent();
@@ -91,7 +97,6 @@ export class addCity {
   /**
    * Uppdaterar huvudkortet med data för denna stad.
    * Använder fade-effekt och formaterar datum/tid med dateUtils.
-   * Markerar också aktuell prick som aktiv.
    */
 
   switchToCurrent() {
@@ -109,6 +114,7 @@ export class addCity {
     // Update favorite button state
     this.updateFavoriteButton();
 
+    // Remove all weather classes
     card.classList.remove(
       "weather-snow",
       "weather-rain",
@@ -118,58 +124,20 @@ export class addCity {
       "weather-clear"
     );
 
-    switch (this.weather) {
-      case "Snöfall":
-        card.classList.toggle("weather-snow");
-        icon.src = "./assets/images/snow.png";
-        icon.alt = `Ikon för ${this.weather}`;
-        break;
-      case "Regn":
-        card.classList.toggle("weather-rain");
-        icon.src = "./assets/images/rain.png";
-        icon.alt = `Ikon för ${this.weather}`;
-        break;
-      case "Åska":
-        card.classList.toggle("weather-thunder");
-        icon.src = "./assets/images/thunderstorm.png";
-        icon.alt = `Ikon för ${this.weather}`;
-        break;
-      case "Mulet":
-        card.classList.toggle("weather-cloudy");
-        icon.src = "./assets/images/mostly-cloudy.png";
-        icon.alt = `Ikon för ${this.weather}`;
-        break;
-      case "Klart":
-        card.classList.toggle("weather-sun");
-        icon.src = "./assets/images/partly-cloudy.png";
-        icon.alt = `Ikon för ${this.weather}`;
-        break;
-      case "Duggregn":
-        card.classList.toggle("weather-rain");
-        icon.src = "./assets/images/rain.png";
-        icon.alt = `Ikon för ${this.weather}`;
-        break;
-      case "Lätt molnigt":
-        card.classList.toggle("weather-cloudy");
-        icon.src = "./assets/images/partly-cloudy.png";
-        icon.alt = `Ikon för ${this.weather}`;
-        break;
-      case "Molnigt":
-        card.classList.toggle("weather-cloudy");
-        icon.src = "./assets/images/mostly-cloudy.png";
-        icon.alt = `Ikon för ${this.weather}`;
-        break;
+    // Add appropriate weather class and set icon
+    const weatherClass = getWeatherClass(this.weather);
+    card.classList.add(weatherClass);
+
+    // Set icon from weathercode
+    if (this.weathercode !== undefined) {
+      const { icon: iconPath } = convertWmoCode(this.weathercode);
+      icon.src = iconPath;
     }
+    icon.alt = `Väderikonen för ${this.weather}`;
 
     const elements = [dateEl, timeEl, city, temp, weather];
 
-    // Fade out
-    elements.forEach((anim) => {
-      if (anim) anim.style.opacity = 0;
-    });
-
-    // Fade in
-    setTimeout(() => {
+    fadeOutInUpdate(elements, () => {
       if (dateEl)
         dateEl.textContent = this.time
           ? formatDate(this.time)
@@ -178,11 +146,7 @@ export class addCity {
       if (city) city.textContent = this.city;
       if (temp) temp.textContent = this.temp + "°C";
       if (weather) weather.textContent = this.weather;
-
-      elements.forEach((anim) => {
-        if (anim) anim.style.opacity = 1;
-      });
-    }, 200);
+    });
   }
   /**
    * Markerar den aktuella pagination-pricken som aktiv (fylld cirkel)
@@ -207,9 +171,6 @@ export class addCity {
     const favoriteBtn = document.querySelector(".favorite-btn");
     const favoriteIcon = document.querySelector(".favorite-btn i");
     if (!favoriteIcon || !favoriteBtn) return;
-
-    const isFav = isFavorite(this.city);
-    favoriteBtn.setAttribute("aria-pressed", isFav ? "true" : "false"); // Indikerar toggle-state
 
     if (isFavorite(this.city)) {
       favoriteIcon.classList.remove("fa-regular");

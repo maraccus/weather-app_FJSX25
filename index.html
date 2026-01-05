@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="sv">
-  <!-- Ändra till sv för svenska, bättre för skärmläsare -->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,15 +7,16 @@
       name="description"
       content="Vädret Nu – enkel och snabb väderprognos för svenska städer. Sök på stad och få aktuellt väder direkt."
     />
-    <!-- Lägg till för WCAG: Skip-link för att hoppa över nav till main -->
-    <link rel="stylesheet" href="css/styles.css" />
-    <!-- Se till att CSS har fokus-stilar, t.ex. :focus { outline: 2px solid blue; } -->
+    <meta name="theme-color" content="#495df5" />
 
     <script type="module" src="js/main.js" defer></script>
+
+    <link rel="stylesheet" href="css/styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,8 +26,10 @@
 
     <title>Vädret Nu – Snabb väderprognos för Sverige</title>
   </head>
+
   <body>
-    <!-- Skip-link: Dold länk för skärmläsare/keyboard-nav -->
-    <a href="#main-container" class="skip-link">Hoppa till huvudinnehåll</a>
+    <noscript>
+      <p>JavaScript måste vara aktiverat för att denna app ska fungera.</p>
+    </noscript>
   </body>
 </html>
