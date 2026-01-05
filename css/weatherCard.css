@@ -92,10 +92,16 @@
     color: inherit;
     transition: transform 0.2s ease, color 0.2s ease;
     padding: 0.5rem;
+    border-radius: 0.5rem;
 }
 
 #card-favorite button:hover {
     transform: scale(1.1);
+}
+
+#card-favorite button:focus-visible {
+    outline: 2px solid #51b7ff;
+    outline-offset: 2px;
 }
 
 #card-favorite button i {

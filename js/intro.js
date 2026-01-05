@@ -75,9 +75,6 @@ export async function initIntro() {
         document.getElementById("intro-dot-3")
     ];
 
-    const cards = document.getElementById("cards-container");
-    const nav = document.getElementById("nav-container");
-
     const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
     // Fade in rubriker

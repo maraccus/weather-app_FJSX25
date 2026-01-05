@@ -4,16 +4,8 @@
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    
     gap: .5rem;
 }
-
-/* @media (max-height: 840px) { 
-
-    #pagination-dots {
-        bottom: -2rem;       
-    }
-} */
 
 #pagination-dots button {
     width: 10px;
@@ -21,15 +13,26 @@
     background: none;
     border: none;
     color: #ffffff;
-  
     cursor: pointer;
+    padding: 0.25rem;
+    transition: transform 0.2s ease;
+}
+
+#pagination-dots button:hover,
+#pagination-dots button:focus-visible {
+    transform: scale(1.3);
+}
+
+#pagination-dots button:focus-visible {
+    outline: 2px solid #51b7ff;
+    outline-offset: 2px;
+    border-radius: 50%;
 }
 
 #card-remove {
     position: absolute;
     right: 1rem;
     top: 1rem;
-
     display: flex;
 }
 
@@ -39,57 +42,75 @@
     background: none;
     border: none;
     color: #ffffff;
-
     cursor: pointer;
     transition: color .1s ease-in;
-    i {
-        font-size: 2rem;
-    }
+    padding: 0;
+    border-radius: 0.5rem;
+}
+
+#card-remove button i {
+    font-size: 2rem;
 }
 
 #card-remove button:hover {
     color: rgb(255, 0, 0);
-    i {
-        box-shadow: 0rem 0rem 4rem rgba(255, 0, 0, 0.2);
+}
 
-    }
+#card-remove button:focus-visible {
+    outline: 2px solid #51b7ff;
+    outline-offset: 2px;
 }
 
 #nav-bar {
     height: 100%;
     width: 100%;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     transition: border-radius 0.2s ease-in, margin-top 0.2s ease-in, box-shadow 0.2s ease-in;
+}
 
-    input {
-        background-color: #ffffff;
-        width: 100%;
-        height: 3rem;
-        border-radius: 1.8rem 0 0 1.8rem;
-        border: 0;
-        padding-left: 1.8rem;
-    }
+#nav-bar input {
+    background-color: #ffffff;
+    width: 100%;
+    height: 3rem;
+    border-radius: 1.8rem 0 0 1.8rem;
+    border: 0;
+    padding-left: 1.8rem;
+    color: #000000;
+}
 
-    button {
-        height: 3rem;
-        width: 4rem;
-        border: 0;
-        background-color: #ffffff;
-        color: #000000;
-        cursor: pointer;
-        border-radius: 0 1.8rem 1.8rem 0;
-        transition: background-color 0.3s ease, color 0.3s ease;
-        i {
-            font-size: 1.2rem;
-        }
-    }
+#nav-bar input:focus {
+    outline: 2px solid #51b7ff;
+    outline-offset: -2px;
+}
 
-    button:hover {
-        background-color: var(--color-primary);
-        color: #ffffff;
-    }
+#nav-bar input::placeholder {
+    color: #666666;
+}
+
+#nav-bar button {
+    height: 3rem;
+    width: 4rem;
+    border: 0;
+    background-color: #ffffff;
+    color: #000000;
+    cursor: pointer;
+    border-radius: 0 1.8rem 1.8rem 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 0;
+}
+
+#nav-bar button i {
+    font-size: 1.2rem;
+}
+
+#nav-bar button:hover {
+    background-color: var(--color-primary, #51b7ff);
+    color: #ffffff;
+}
+
+#nav-bar button:focus-visible {
+    outline: 2px solid #51b7ff;
+    outline-offset: -2px;
 }

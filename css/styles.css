@@ -27,3 +27,23 @@ body {
     color: #ffffff;
     font-family: roboto;
 }
+
+/* WCAG: Screen reader only text */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Fokus visible för tangentbordsnavigering */
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid #51b7ff;
+    outline-offset: 2px;
+}
