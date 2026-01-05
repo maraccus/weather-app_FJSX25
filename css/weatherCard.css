@@ -111,6 +111,9 @@
         max-width: 1024px;
         box-shadow: .2rem 1rem 3rem rgba(0, 0, 0, 0.2);
     }
+    #nav-bar {
+        margin-top: 1.2rem;
+    }
 }
 
 @media (max-width: 540px) { 
