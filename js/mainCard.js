@@ -4,18 +4,23 @@
  * och placerar dem i #cards-container.
  */
 export function initMainCard() {
-  // Skapa main-container
+  // Skapa main-container med landmark
   const mainContainer = document.createElement("div");
   mainContainer.id = "main-container";
+  mainContainer.setAttribute("role", "main"); // Landmark för huvudinnehåll
+  mainContainer.setAttribute("aria-label", "Huvudväderkort"); // För VoiceOver
   document.body.appendChild(mainContainer);
 
-  // Skapa <!-- <div id="cards-container"></div> -->
+  // Skapa cards-container
   const cContainer = document.createElement("div");
   cContainer.id = "cards-container";
+  cContainer.setAttribute("aria-live", "polite"); // Annonserar förändringar (t.ex. stadsväxling)
 
   // Skapa section
   const section = document.createElement("section");
-  section.classList.add("card"); // Bakgrund sätts här
+  section.classList.add("card");
+  section.setAttribute("role", "region"); // Grupperar relaterat innehåll
+  section.setAttribute("aria-labelledby", "card-city"); // Koppla till stadens heading
 
   // Datum
   const date = document.createElement("p");
@@ -36,7 +41,7 @@ export function initMainCard() {
   const icon = document.createElement("img");
   icon.className = "card-icon";
   icon.src = "assets/images/snow.png";
-  icon.alt = "";
+  icon.alt = "Väderikon"; // Grund-alt, uppdateras i addCity.js
 
   // Temperatur
   const temp = document.createElement("h3");
@@ -88,5 +93,3 @@ export function initMainCard() {
 
   console.log("Huvudkort skapat");
 }
-
-

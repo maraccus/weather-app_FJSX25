@@ -5,25 +5,37 @@
 @import "popup.css";
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-    --min-width: 420px;
-    --max-width: 600px;
+  --min-width: 420px;
+  --max-width: 600px;
 
-    --card-br: 3rem;
-    --card-t-b-height: 4rem;
-    --card-bg: #495df5;
-    --card-margin-top: 4rem;
+  --card-br: 3rem;
+  --card-t-b-height: 4rem;
+  --card-bg: #495df5;
+  --card-margin-top: 4rem;
 
-    --main-bg: #333333;
+  --main-bg: #333333;
 }
 
 body {
-    background-color: var(--main-bg);
-    color: #ffffff;
-    font-family: roboto;
+  background-color: var(--main-bg);
+  color: #ffffff;
+  font-family: roboto;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #fff;
+  padding: 8px;
+  z-index: 1000;
+}
+.skip-link:focus {
+  top: 0;
 }

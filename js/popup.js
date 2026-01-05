@@ -6,6 +6,8 @@ export function initPopup() {
   const popUp = document.createElement("div");
   popUp.id = "warning-popup";
   popUp.classList.add("popup");
+  popUp.setAttribute("role", "alert"); // Annonserar som varning för VoiceOver
+  popUp.setAttribute("aria-live", "assertive"); // Omedelbar annonsering
   document.body.appendChild(popUp);
 
   const testBtn = document.getElementById("poptest");
@@ -24,7 +26,8 @@ export function initPopup() {
 export function showPopup(popuptext) {
   const popup = document.getElementById("warning-popup");
   popup.innerHTML =
-    '<i class="fa-solid fa-triangle-exclamation"></i> ' + popuptext;
+    '<i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> ' +
+    popuptext; // aria-hidden på ikon
 
   // Add the show class
   popup.classList.add("show");
