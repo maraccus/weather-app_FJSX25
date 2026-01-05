@@ -1,7 +1,7 @@
 #welcome-container {
   transition: opacity 0.8s ease, transform 0.8s ease;
   text-align: center;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 #welcome-container h2 {
