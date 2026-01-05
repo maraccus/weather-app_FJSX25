@@ -138,6 +138,9 @@ async function addDefaultCity() {
           weather.weathercode
         );
         savedCities.push(dot);
+        // Lägg till ID till staden
+        let savedId = savedCities.length;
+        savedCities[savedId - 1].id = savedId - 1;
       }
     }
   } else {
