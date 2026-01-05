@@ -33,8 +33,11 @@ export class addCity {
 
     this.element = document.createElement("button");
 
+    this.element.setAttribute("aria-label", `Växla till ${this.city}`); // För VoiceOver
+
     const dotIcon = document.createElement("i");
     dotIcon.classList.add("fa-regular", "fa-circle");
+    dotIcon.setAttribute("aria-hidden", "true"); // Ikoner är dekorativa
 
     this.element.appendChild(dotIcon);
 
@@ -54,36 +57,36 @@ export class addCity {
     }
   }
 
-  removeCity(savedCities){
+  removeCity(savedCities) {
     console.log("Removing city:", this.city);
 
-  const container = document.getElementById("pagination-dots");
-  if (!container || !this.element) return;
+    const container = document.getElementById("pagination-dots");
+    if (!container || !this.element) return;
 
-  const removedIndex = this.id;
+    const removedIndex = this.id;
 
-  // 1. Remove from array
-  savedCities.splice(removedIndex, 1);
+    // 1. Remove from array
+    savedCities.splice(removedIndex, 1);
 
-  // 2. Remove DOM element
-  container.removeChild(this.element);
+    // 2. Remove DOM element
+    container.removeChild(this.element);
 
-  // 3. Fix IDs
-  for (let i = removedIndex; i < savedCities.length; i++) {
-    savedCities[i].id -= 1;
-  }
+    // 3. Fix IDs
+    for (let i = removedIndex; i < savedCities.length; i++) {
+      savedCities[i].id -= 1;
+    }
 
-  // 4. Choose next city (or previous)
-  if (savedCities.length > 0) {
-    const nextIndex =
-      removedIndex < savedCities.length
-        ? removedIndex           // next exists
-        : removedIndex - 1;      // fallback to previous
+    // 4. Choose next city (or previous)
+    if (savedCities.length > 0) {
+      const nextIndex =
+        removedIndex < savedCities.length
+          ? removedIndex // next exists
+          : removedIndex - 1; // fallback to previous
 
-    const nextCity = savedCities[nextIndex];
-    nextCity.switchToCurrent();
-    nextCity.setActiveDot(nextCity.element.querySelector("i"));
-  }
+      const nextCity = savedCities[nextIndex];
+      nextCity.switchToCurrent();
+      nextCity.setActiveDot(nextCity.element.querySelector("i"));
+    }
   }
   /**
    * Uppdaterar huvudkortet med data för denna stad.
@@ -119,34 +122,42 @@ export class addCity {
       case "Snöfall":
         card.classList.toggle("weather-snow");
         icon.src = "./assets/images/snow.png";
+        icon.alt = `Ikon för ${this.weather}`;
         break;
       case "Regn":
         card.classList.toggle("weather-rain");
         icon.src = "./assets/images/rain.png";
+        icon.alt = `Ikon för ${this.weather}`;
         break;
       case "Åska":
         card.classList.toggle("weather-thunder");
         icon.src = "./assets/images/thunderstorm.png";
+        icon.alt = `Ikon för ${this.weather}`;
         break;
       case "Mulet":
         card.classList.toggle("weather-cloudy");
         icon.src = "./assets/images/mostly-cloudy.png";
+        icon.alt = `Ikon för ${this.weather}`;
         break;
       case "Klart":
         card.classList.toggle("weather-sun");
         icon.src = "./assets/images/partly-cloudy.png";
+        icon.alt = `Ikon för ${this.weather}`;
         break;
       case "Duggregn":
         card.classList.toggle("weather-rain");
         icon.src = "./assets/images/rain.png";
+        icon.alt = `Ikon för ${this.weather}`;
         break;
       case "Lätt molnigt":
         card.classList.toggle("weather-cloudy");
         icon.src = "./assets/images/partly-cloudy.png";
+        icon.alt = `Ikon för ${this.weather}`;
         break;
       case "Molnigt":
         card.classList.toggle("weather-cloudy");
         icon.src = "./assets/images/mostly-cloudy.png";
+        icon.alt = `Ikon för ${this.weather}`;
         break;
     }
 
@@ -196,6 +207,9 @@ export class addCity {
     const favoriteBtn = document.querySelector(".favorite-btn");
     const favoriteIcon = document.querySelector(".favorite-btn i");
     if (!favoriteIcon || !favoriteBtn) return;
+
+    const isFav = isFavorite(this.city);
+    favoriteBtn.setAttribute("aria-pressed", isFav ? "true" : "false"); // Indikerar toggle-state
 
     if (isFavorite(this.city)) {
       favoriteIcon.classList.remove("fa-regular");
