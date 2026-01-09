@@ -71,18 +71,18 @@ export class addCity {
 
     const removedIndex = this.id;
 
-    // 1. Remove from array
+    // Ta bort från arr
     savedCities.splice(removedIndex, 1);
 
-    // 2. Remove DOM element
+    // Ta bort DOM-element
     container.removeChild(this.element);
 
-    // 3. Fix IDs
+    // Fix IDs
     for (let i = removedIndex; i < savedCities.length; i++) {
       savedCities[i].id -= 1;
     }
 
-    // 4. Choose next city (or previous)
+    // Välj nästa stad
     if (savedCities.length > 0) {
       const nextIndex =
         removedIndex < savedCities.length
@@ -100,7 +100,6 @@ export class addCity {
    */
 
   switchToCurrent() {
-    // Set this city as the current one globally
     window.currentCity = this;
 
     const dateEl = document.querySelector(".card-date");
@@ -111,10 +110,9 @@ export class addCity {
     const card = document.querySelector(".card");
     const icon = document.querySelector(".card-icon");
 
-    // Update favorite button state
+    
     this.updateFavoriteButton();
 
-    // Remove all weather classes
     card.classList.remove(
       "weather-snow",
       "weather-rain",
@@ -124,11 +122,9 @@ export class addCity {
       "weather-clear"
     );
 
-    // Add appropriate weather class and set icon
     const weatherClass = getWeatherClass(this.weather);
     card.classList.add(weatherClass);
 
-    // Set icon from weathercode
     if (this.weathercode !== undefined) {
       const { icon: iconPath } = convertWmoCode(this.weathercode);
       icon.src = iconPath;
